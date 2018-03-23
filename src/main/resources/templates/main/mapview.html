@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rule your empire</title>
+</head>
+<body>
+    <p>The world map</p>
+
+    <ul>
+        <li th:each="tile : ${maptiles}" th:text="${tile.getX() + ' ' + tile.getY() + ' ' + tile.getName()}">
+
+        </li>
+    </ul>
+</body>
+</html>
