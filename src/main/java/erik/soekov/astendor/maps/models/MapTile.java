@@ -9,27 +9,23 @@ public class MapTile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "map_id")
-    private Integer mapId;
+
     private Integer x;
     private Integer y;
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name="map_id", nullable = false)
+    private Map map;
+
     public MapTile() {
     }
 
-    public MapTile(Integer mapId, Integer x, Integer y, String name) {
-        this.mapId = mapId;
+    public MapTile(Integer x, Integer y, String name, Map map) {
         this.x = x;
         this.y = y;
         this.name = name;
-    }
-
-    public MapTile(Integer id, Integer mapId, Integer x, Integer y, String name) {
-        this.mapId = mapId;
-        this.x = x;
-        this.y = y;
-        this.name = name;
+        this.map = map;
     }
 
     public Integer getId() {
@@ -38,14 +34,6 @@ public class MapTile {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getMapId() {
-        return mapId;
-    }
-
-    public void setMapId(Integer mapId) {
-        this.mapId = mapId;
     }
 
     public Integer getX() {

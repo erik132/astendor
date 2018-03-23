@@ -8,7 +8,7 @@
     <p>The world map</p>
 
     <ul>
-        <li th:each="tile : ${maptiles}" th:text="${tile.getX() + ' ' + tile.getY() + ' ' + tile.getName()}">
+        <li th:each="tile : ${worldmap.getTiles()}" th:text="${tile.getX() + ' ' + tile.getY() + ' ' + tile.getName()}">
 
         </li>
     </ul>

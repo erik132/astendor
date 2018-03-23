@@ -3,6 +3,8 @@ DROP TABLE IF EXISTS maptiles;
 
 CREATE TABLE maps (
   id INT(6)  AUTO_INCREMENT PRIMARY KEY,
+  xdim INT(4) NOT NULL,
+  ydim INT(4) NOT NULL,
   name VARCHAR(30) NOT NULL,
   description VARCHAR(255) NOT NULL
 );
@@ -15,8 +17,8 @@ CREATE TABLE maptiles(
   name VARCHAR(255) NOT NULL
 );
 
-INSERT INTO maps (name, description) VALUES
-  ("Moria", "Initial 3x3 test map");
+INSERT INTO maps (xdim, ydim, name, description) VALUES
+  (3,3,"Moria", "Initial 3x3 test map");
 
 INSERT INTO maptiles(map_id, x, y, name) VALUES
   (1,0,0, "Chaos mountain 1"),
