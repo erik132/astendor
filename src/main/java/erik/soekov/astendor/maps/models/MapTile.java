@@ -16,16 +16,19 @@ public class MapTile {
 
     @ManyToOne
     @JoinColumn(name="map_id", nullable = false)
-    private Map map;
+    private WorldMap worldMap;
+
+    private Integer terrainId;
 
     public MapTile() {
     }
 
-    public MapTile(Integer x, Integer y, String name, Map map) {
+    public MapTile(Integer x, Integer y, String name, WorldMap worldMap, Integer terrainId) {
         this.x = x;
         this.y = y;
         this.name = name;
-        this.map = map;
+        this.worldMap = worldMap;
+        this.terrainId = terrainId;
     }
 
     public Integer getId() {
@@ -58,5 +61,21 @@ public class MapTile {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public WorldMap getWorldMap() {
+        return worldMap;
+    }
+
+    public void setWorldMap(WorldMap worldMap) {
+        this.worldMap = worldMap;
+    }
+
+    public Integer getTerrainId() {
+        return terrainId;
+    }
+
+    public void setTerrainId(Integer terrainId) {
+        this.terrainId = terrainId;
     }
 }

@@ -1,8 +1,8 @@
 package erik.soekov.astendor.maps.services;
 
-import erik.soekov.astendor.maps.models.Map;
+import erik.soekov.astendor.maps.models.WorldMap;
 
 public interface MapService {
 
-    public Map getMap(Integer id);
+    public WorldMap getMap(Integer id);
 }

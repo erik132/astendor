@@ -20,7 +20,7 @@ public class MapController {
 
     @RequestMapping("/map")
     public String mapview(Model model){
-        model.addAttribute("worldmap", mapService.getMap(1));
+        model.addAttribute("worldmap", mapService.getMap(2));
         return "main/mapview";
     }
 }

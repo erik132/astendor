@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="maps")
-public class Map {
+public class WorldMap {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,14 +16,14 @@ public class Map {
     private Integer xdim;
     private Integer ydim;
 
-    @OneToMany(mappedBy = "map", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "worldMap", cascade = CascadeType.ALL)
     @OrderBy("y,x ASC")
     private Set<MapTile> tiles;
 
-    public Map() {
+    public WorldMap() {
     }
 
-    public Map(String name, String description, Integer xdim, Integer ydim, Set<MapTile> tiles) {
+    public WorldMap(String name, String description, Integer xdim, Integer ydim, Set<MapTile> tiles) {
         this.name = name;
         this.description = description;
         this.xdim = xdim;
