@@ -12,7 +12,7 @@
     <p>The world worldMap</p>
 
     <div class="map-background">
-        <div class="is-gapless" th:each="row : ${worldmap.xyTiles()}">
+        <div class="is-gapless" th:each="row : ${worldmap.yxTiles()}">
             <div class="columns is-gapless is-mobile">
                 <div class="column notification is-warning map-strech maptile" th:each="tile2: ${row}" th:text="${tile2.getName()}"></div>
             </div>

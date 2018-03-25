@@ -81,15 +81,15 @@ public class WorldMap {
         this.ydim = ydim;
     }
 
-    public List<List<MapTile>> xyTiles(){
+    public List<List<MapTile>> yxTiles(){
         List<List<MapTile>> result = new ArrayList<>();
 
-        for(Integer i=0; i< this.getXdim(); i++){
+        for(Integer i=0; i< this.getYdim(); i++){
             result.add(new ArrayList<>());
         }
 
         this.getTiles().forEach(tile ->{
-            result.get(tile.getX()).add(tile.getY(),tile);
+            result.get(tile.getY()).add(tile.getX(),tile);
         });
 
         return result;
