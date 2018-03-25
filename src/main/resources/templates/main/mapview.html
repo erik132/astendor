@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Rule your empire</title>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/bulma/0.6.2/css/bulma.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/worldMap.css}">
+    <script type="text/javascript" th:src="@{webjars/jquery/3.3.1/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{js/worldMap.js}"></script>
 </head>
 <body>
     <p>The world worldMap</p>
@@ -12,5 +16,16 @@
 
         </li>
     </ul>
+    <div class="map-background">
+        <div class="is-gapless" th:each="row : ${worldmap.xyTiles()}">
+            <div class="columns is-gapless is-mobile">
+                <div class="column notification is-warning map-strech maptile" th:each="tile2: ${row}" th:text="${tile2.getName()}"></div>
+            </div>
+        </div>
+    </div>
+
 </body>
+    <script type="text/javascript">
+        setEqual();
+    </script>
 </html>

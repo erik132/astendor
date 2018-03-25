@@ -1,6 +1,8 @@
 package erik.soekov.astendor.maps.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -77,5 +79,24 @@ public class WorldMap {
 
     public void setYdim(Integer ydim) {
         this.ydim = ydim;
+    }
+
+    public List<List<MapTile>> xyTiles(){
+        List<List<MapTile>> result = new ArrayList<>();
+        Set<MapTile> tiles = this.getTiles();
+
+        Integer i = 0,u = 0;
+
+        for(i=0; i< this.getXdim(); i++){
+            result.add(new ArrayList<>());
+            
+        }
+
+        tiles.forEach(tile ->{
+            result.get(tile.getX()).add(tile.getY(),tile);
+        });
+
+
+        return result;
     }
 }

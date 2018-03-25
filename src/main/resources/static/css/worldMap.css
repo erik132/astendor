@@ -1,0 +1,20 @@
+.maptile{
+    opacity: 0.3;
+    filter: alpha(opacity=30); /* For IE8 and earlier */
+}
+
+.maptile:hover{
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.map-background{
+    background-image: url("/map1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: #cccccc;
+}
+
+.map-strech{
+
+}
