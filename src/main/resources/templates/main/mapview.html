@@ -11,11 +11,6 @@
 <body>
     <p>The world worldMap</p>
 
-    <ul>
-        <li th:each="tile : ${worldmap.getTiles()}" th:text="${tile.getX() + ' ' + tile.getY() + ' ' + tile.getName()}">
-
-        </li>
-    </ul>
     <div class="map-background">
         <div class="is-gapless" th:each="row : ${worldmap.xyTiles()}">
             <div class="columns is-gapless is-mobile">

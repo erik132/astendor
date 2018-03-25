@@ -83,19 +83,14 @@ public class WorldMap {
 
     public List<List<MapTile>> xyTiles(){
         List<List<MapTile>> result = new ArrayList<>();
-        Set<MapTile> tiles = this.getTiles();
 
-        Integer i = 0,u = 0;
-
-        for(i=0; i< this.getXdim(); i++){
+        for(Integer i=0; i< this.getXdim(); i++){
             result.add(new ArrayList<>());
-            
         }
 
-        tiles.forEach(tile ->{
+        this.getTiles().forEach(tile ->{
             result.get(tile.getX()).add(tile.getY(),tile);
         });
-
 
         return result;
     }
