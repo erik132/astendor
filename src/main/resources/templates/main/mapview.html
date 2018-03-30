@@ -14,13 +14,16 @@
     <div class="map-background">
         <div class="is-gapless" th:each="row : ${worldmap.yxTiles()}">
             <div class="columns is-gapless is-mobile">
-                <div class="column notification is-warning map-strech maptile" th:each="tile2: ${row}" th:text="${tile2.getName()}"></div>
+                <div class="column notification is-warning map-strech maptile maptip" th:each="tile2: ${row}">
+                    <span class="maptiptext">
+                        <p th:text="${tile2.getName()}"></p>
+                        <p th:text="${tile2.getTerrainId()}"></p>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
 
 </body>
-    <script type="text/javascript">
-        setEqual();
-    </script>
+    <script type="text/javascript" th:src="@{js/worldMapBottom.js}"></script>
 </html>

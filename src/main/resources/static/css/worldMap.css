@@ -18,3 +18,16 @@
 .map-strech{
 
 }
+
+.maptip {
+    text-decoration:none;
+    position:relative;
+}
+.maptip .maptiptext {
+    display:none;
+}
+.maptip:hover .maptiptext {
+    display:block;
+    position:fixed;
+    overflow:hidden;
+}
