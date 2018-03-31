@@ -22,15 +22,20 @@ public class MapTile {
     @JoinColumn(name="terrain_id", nullable=false)
     private Terrain terrain;
 
+    @ManyToOne
+    @JoinColumn(name="race_id", nullable = false)
+    private Race race;
+
     public MapTile() {
     }
 
-    public MapTile(Integer x, Integer y, String name, WorldMap worldMap, Terrain terrain) {
+    public MapTile(Integer x, Integer y, String name, WorldMap worldMap, Terrain terrain, Race race) {
         this.x = x;
         this.y = y;
         this.name = name;
         this.worldMap = worldMap;
         this.terrain = terrain;
+        this.race = race;
     }
 
     public Integer getId() {
@@ -79,5 +84,13 @@ public class MapTile {
 
     public void setTerrain(Terrain terrain) {
         this.terrain = terrain;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
     }
 }

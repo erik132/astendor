@@ -14,10 +14,11 @@
     <div class="map-background">
         <div class="is-gapless" th:each="row : ${worldmap.yxTiles()}">
             <div class="columns is-gapless is-mobile">
-                <div class="column notification is-warning map-strech maptile maptip" th:each="tile2: ${row}">
+                <div class="column notification is-warning map-strech maptile maptip" th:each="tile: ${row}">
                     <span class="maptiptext">
-                        <p th:text="${tile2.getName()}"></p>
-                        <p th:text="'Terrain: ' + ${tile2.getTerrain().getName()}"></p>
+                        <p th:text="${tile.getName()}"></p>
+                        <p th:text="'Terrain: ' + ${tile.getTerrain().getName()}"></p>
+                        <p th:text="'Race: ' + ${tile.getRace().getName()}"></p>
                     </span>
                 </div>
             </div>
