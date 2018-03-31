@@ -17,7 +17,7 @@
                 <div class="column notification is-warning map-strech maptile maptip" th:each="tile2: ${row}">
                     <span class="maptiptext">
                         <p th:text="${tile2.getName()}"></p>
-                        <p th:text="${tile2.getTerrainId()}"></p>
+                        <p th:text="'Terrain: ' + ${tile2.getTerrain().getName()}"></p>
                     </span>
                 </div>
             </div>
