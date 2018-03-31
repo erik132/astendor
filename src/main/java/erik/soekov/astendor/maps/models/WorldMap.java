@@ -17,6 +17,7 @@ public class WorldMap {
 
     private Integer xdim;
     private Integer ydim;
+    private String mapFile;
 
     @OneToMany(mappedBy = "worldMap", cascade = CascadeType.ALL)
     @OrderBy("y,x ASC")
@@ -79,6 +80,14 @@ public class WorldMap {
 
     public void setYdim(Integer ydim) {
         this.ydim = ydim;
+    }
+
+    public String getMapFile() {
+        return mapFile;
+    }
+
+    public void setMapFile(String mapFile) {
+        this.mapFile = mapFile;
     }
 
     public List<List<MapTile>> yxTiles(){

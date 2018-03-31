@@ -7,7 +7,8 @@ CREATE TABLE maps (
   xdim INT(4) NOT NULL,
   ydim INT(4) NOT NULL,
   name VARCHAR(30) NOT NULL,
-  description VARCHAR(255) NOT NULL
+  description VARCHAR(255) NOT NULL,
+  map_file VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE maptiles(
@@ -48,9 +49,9 @@ INSERT INTO terrains (id, name, description) VALUES
   (6,"Wetlands", "random resources and wierd stuff in general"),
   (7,"Hills", "Elevated ground with some minerals");
 
-INSERT INTO maps (xdim, ydim, name, description) VALUES
-  (3,3,"Moria", "Initial 3x3 test map"),
-  (3,3,"Montreal", "Second 3x3 test map");
+INSERT INTO maps (xdim, ydim, name, description, map_file) VALUES
+  (3,3,"Moria", "Initial 3x3 test map", "moria.jpg"),
+  (3,3,"Montreal", "Second 3x3 test map", "montreal.jpg");
 
 INSERT INTO maptiles(map_id, x, y, name, terrain_id, race_id) VALUES
   (1,0,0, "Chaos mountain 1", 2,1),
