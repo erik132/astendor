@@ -1,6 +1,8 @@
 DROP TABLE IF EXISTS maps;
 DROP TABLE IF EXISTS maptiles;
 DROP TABLE IF EXISTS terrains;
+DROP TABLE IF EXISTS races;
+DROP TABLE IF EXISTS worlds;
 
 CREATE TABLE maps (
   id INT  AUTO_INCREMENT PRIMARY KEY,
@@ -9,6 +11,12 @@ CREATE TABLE maps (
   name VARCHAR(30) NOT NULL,
   description VARCHAR(255) NOT NULL,
   map_file VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE worlds(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL,
+  map_id INT NOT NULL
 );
 
 CREATE TABLE maptiles(
@@ -52,6 +60,9 @@ INSERT INTO terrains (id, name, description) VALUES
 INSERT INTO maps (xdim, ydim, name, description, map_file) VALUES
   (3,3,"Moria", "Initial 3x3 test map", "moria.jpg"),
   (3,3,"Montreal", "Second 3x3 test map", "montreal.jpg");
+
+INSERT INTO worlds (name, map_id) VALUES
+  ("Pernau1", 2);
 
 INSERT INTO maptiles(map_id, x, y, name, terrain_id, race_id) VALUES
   (1,0,0, "Chaos mountain 1", 2,1),
