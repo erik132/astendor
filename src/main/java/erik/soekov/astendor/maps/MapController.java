@@ -13,9 +13,6 @@ import java.util.Set;
 public class MapController {
 
     @Autowired
-    private TileService tileService;
-
-    @Autowired
     private MapService mapService;
 
     @RequestMapping("/map")
