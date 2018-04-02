@@ -9,22 +9,55 @@
     <script type="text/javascript" th:src="@{js/worldMap.js}"></script>
 </head>
 <body>
-    <p>The world worldMap</p>
+    <div class="container">
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical is-8">
+                <div class="tile">
+                    <!--<div class="tile is-parent is-vertical">
+                        <div class="tile is-child notification">
+                            <p class="title">Vertical...</p>
+                            <p class="subtitle">Top tile</p>
+                        </div>
 
-    <div th:style="'background-image:url(maps/'+ ${worldmap.getMapFile()} +');'" class="map-background">
-        <div class="is-gapless" th:each="row : ${worldmap.yxTiles()}">
-            <div class="columns is-gapless is-mobile">
-                <div class="column notification map-strech maptile maptip" th:each="tile: ${row}">
-                    <span class="maptiptext">
-                        <p th:text="${tile.getName()}"></p>
-                        <p th:text="'Terrain: ' + ${tile.getTerrain().getName()}"></p>
-                        <p th:text="'Race: ' + ${tile.getRace().getName()}"></p>
-                    </span>
+                    </div>-->
+                    <!-- the world map -->
+                    <div class="tile is-parent">
+                        <div class="tile is-child notification is-dark">
+                            <div th:style="'background-image:url(maps/'+ ${worldmap.getMapFile()} +');'" class="map-background">
+                                <div class="is-gapless" th:each="row : ${worldmap.yxTiles()}">
+                                    <div class="columns is-gapless is-mobile">
+                                        <div class="column notification map-strech maptile maptip" th:each="tile: ${row}">
+                                            <span class="maptiptext">
+                                                <p th:text="${tile.getName()}"></p>
+                                                <p th:text="'Terrain: ' + ${tile.getTerrain().getName()}"></p>
+                                                <p th:text="'Race: ' + ${tile.getRace().getName()}"></p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-dark">
+                        <p class="title">Bottom information</p>
+
+                    </article>
                 </div>
             </div>
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-dark">
+                    <div class="content">
+                        <p class="title">Warlord order section</p>
+
+                    </div>
+                </article>
+            </div>
         </div>
+
     </div>
 
 </body>
-    <script type="text/javascript" th:src="@{js/worldMapBottom.js}"></script>
+<script type="text/javascript" th:src="@{js/worldMapBottom.js}"></script>
 </html>
