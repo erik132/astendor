@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bulma/0.6.2/css/bulma.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/worldMap.css}">
     <script type="text/javascript" th:src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/vue/2.5.13/vue.js}"></script>
     <script type="text/javascript" th:src="@{/js/worldMap.js}"></script>
 </head>
 <body>
@@ -19,6 +20,7 @@
                                 <div class="is-gapless" th:each="row : ${worldmap.yxTiles()}">
                                     <div class="columns is-gapless is-mobile">
                                         <div class="column notification map-strech maptile maptip" th:each="tile: ${row}">
+                                            <img th:src="@{/flags/egypt.png}">
                                             <span class="maptiptext">
                                                 <p th:text="${tile.getName()}"></p>
                                                 <p th:text="'Terrain: ' + ${tile.getTerrain().getName()}"></p>
