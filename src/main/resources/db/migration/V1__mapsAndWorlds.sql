@@ -16,7 +16,8 @@ CREATE TABLE maps (
 CREATE TABLE worlds(
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
-  map_id INT NOT NULL
+  map_id INT NOT NULL,
+  turn_nr INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE maptiles(

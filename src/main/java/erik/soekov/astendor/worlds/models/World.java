@@ -12,6 +12,7 @@ public class World {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private Integer turnNr;
 
     @ManyToOne
     @JoinColumn(name = "map_id", nullable = false)
@@ -47,5 +48,17 @@ public class World {
 
     public void setMap(WorldMap map) {
         this.map = map;
+    }
+
+    public Integer getTurnNr() {
+        return turnNr;
+    }
+
+    public void setTurnNr(Integer turnNr) {
+        this.turnNr = turnNr;
+    }
+
+    public void increaseTurn(){
+        this.turnNr++;
     }
 }
