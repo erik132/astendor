@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="tile is-ancestor">
+        <div id="mapview" class="tile is-ancestor">
             <div class="tile is-vertical is-8">
 
                 <div class="tile is-parent">
@@ -21,7 +21,7 @@
                             <div class="is-gapless" th:each="row : ${worldmap.yxTiles()}">
                                 <div class="columns is-gapless is-mobile">
                                     <div class="column notification map-strech maptile maptip" th:each="tile: ${row}">
-                                        <img th:src="@{/flags/egypt.png}">
+                                        <areabanner th:x="${tile.getX()}" th:y="${tile.getY()}" :warrior="warlord"></areabanner>
                                         <span class="maptiptext">
                                             <p th:text="${tile.getName()}"></p>
                                             <p th:text="'Terrain: ' + ${tile.getTerrain().getName()}"></p>
@@ -55,5 +55,7 @@
     </div>
 
 </body>
+<script type="text/javascript" th:src="@{/js/worldMapVue.js}"></script>
 <script type="text/javascript" th:src="@{/js/worldMapBottom.js}"></script>
+
 </html>
