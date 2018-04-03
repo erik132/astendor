@@ -58,4 +58,19 @@ public class Warlord {
     public void setWorld(World world) {
         this.world = world;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Warlord other;
+        try{
+            other = (Warlord)obj;
+        }catch (Exception e){
+            return false;
+        }
+
+        if(other.getId() == this.getId()){
+            return true;
+        }
+        return false;
+    }
 }
