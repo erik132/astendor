@@ -1,5 +1,7 @@
 package erik.soekov.astendor.orders.orderTypes;
 
+import erik.soekov.astendor.warlords.model.Warlord;
+
 public class MovementOrder implements OrderFrame{
 
     public MovementOrder() {
@@ -11,7 +13,7 @@ public class MovementOrder implements OrderFrame{
     }
 
     @Override
-    public void executeOrder() {
+    public void executeOrder(Warlord warlord) {
         System.out.println("Executing movement order");
     }
 }
