@@ -1,4 +1,4 @@
-setEqual();
+
 
 var tooltips = document.querySelectorAll('.maptip .maptiptext');
 
@@ -15,3 +15,17 @@ window.onmousemove = function (e) {
 function endturn(){
     mapview.endturn();
 }
+
+function initmap(){
+    mapview.getState();
+}
+
+
+//---------------------------------------------------
+//
+//              All initialisers
+//
+//----------------------------------------------------
+
+setEqual();
+initmap();

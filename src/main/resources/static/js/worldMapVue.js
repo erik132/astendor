@@ -26,6 +26,7 @@ var mapview = new Vue({
     el: "#mapview",
     data: {
         warlord:{
+            id: 1,
             x: 1,
             y: 1,
         }
@@ -43,6 +44,17 @@ var mapview = new Vue({
                 console.log(response.data);
             },function(response) {
                 console.log("error ending turn");
+                console.log(response.data);
+            });
+        },
+        getState(){
+            this.$http.post("/worldstate/get/1").then(function(response){
+
+               this.setWarlordPos(response.data.warlord.x, response.data.warlord.y);
+               this.warlord.id = response.data.id;
+
+            }, function(response){
+                console.log("error getting world state");
                 console.log(response.data);
             });
         }
