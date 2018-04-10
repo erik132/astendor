@@ -8,11 +8,12 @@ import javax.persistence.*;
 @Table(name="orders")
 public class Order {
 
-    @Id
-    private Integer id;
+    @EmbeddedId
+    private OrderIdentity orderIdentity;
     private String orderParams;
 
     @ManyToOne
+    @MapsId("warlordId")
     @JoinColumn(name = "warlord_id", nullable = false)
     private Warlord warlord;
 
@@ -23,19 +24,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(Integer id, String orderParams, Warlord warlord, OrderType orderType) {
-        this.id = id;
+    public Order( String orderParams, Warlord warlord, OrderType orderType) {
         this.orderParams = orderParams;
         this.warlord = warlord;
         this.orderType = orderType;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getOrderParams() {
@@ -60,5 +52,13 @@ public class Order {
 
     public void setOrderType(OrderType orderType) {
         this.orderType = orderType;
+    }
+
+    public OrderIdentity getOrderIdentity() {
+        return orderIdentity;
+    }
+
+    public void setOrderIdentity(OrderIdentity orderIdentity) {
+        this.orderIdentity = orderIdentity;
     }
 }

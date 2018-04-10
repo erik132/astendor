@@ -12,10 +12,11 @@ CREATE TABLE warlords(
 );
 
 CREATE TABLE orders(
-  id INT AUTO_INCREMENT PRIMARY KEY,
   warlord_id INT NOT NULL,
+  order_nr INT NOT NULL,
   order_type INT NOT NULL,
-  order_params VARCHAR(250) NOT NULL
+  order_params VARCHAR(250) NOT NULL,
+  PRIMARY KEY (warlord_id, order_nr)
 );
 
 CREATE TABLE order_types(
@@ -30,6 +31,6 @@ INSERT INTO warlords (world_id, user_id, race_id, x, y) VALUES
 INSERT INTO order_types (id, name, order_bean) VALUES
   (1,"Movement","movementOrder");
 
-INSERT INTO orders (warlord_id, order_type, order_params) VALUES
-  (1,1,"north"),
-  (1,1,"east");
+INSERT INTO orders (warlord_id, order_nr, order_type, order_params) VALUES
+  (1,1,1,"north"),
+  (1,2,1,"east");
