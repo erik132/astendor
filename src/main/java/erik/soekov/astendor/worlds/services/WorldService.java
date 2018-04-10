@@ -5,4 +5,5 @@ import erik.soekov.astendor.worlds.models.World;
 public interface WorldService {
 
     public World getWorld(Integer id);
+    public void IncreaseWorldTurn(Integer worldId);
 }

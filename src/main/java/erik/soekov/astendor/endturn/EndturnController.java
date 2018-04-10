@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/endturn")
 public class EndturnController {
 
     @Autowired
     private EndturnService endturnService;
 
     //triggers a turn advance in the current world
-    @RequestMapping(method = RequestMethod.POST, value = "/endturn/{worldId}")
+    @RequestMapping(method = RequestMethod.POST, value = "/{worldId}")
     public String endTurn(@PathVariable Integer worldId){
         this.endturnService.endturn(worldId);
         return "turn ended";

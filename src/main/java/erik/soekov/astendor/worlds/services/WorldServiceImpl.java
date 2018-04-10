@@ -15,4 +15,11 @@ public class WorldServiceImpl implements WorldService{
     public World getWorld(Integer id) {
         return this.worldRepository.findById(id).get();
     }
+
+    @Override
+    public void IncreaseWorldTurn(Integer worldId) {
+        World world = this.worldRepository.findById(worldId).get();
+        world.increaseTurn();
+        this.worldRepository.save(world);
+    }
 }
