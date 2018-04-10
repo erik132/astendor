@@ -15,4 +15,9 @@ public class WarlordServiceImpl implements WarlordService{
     public Warlord getWarlord(Integer id) {
         return this.warlordRepository.findById(id).get();
     }
+
+    @Override
+    public void setWarlord(Warlord warlord) {
+        this.warlordRepository.save(warlord);
+    }
 }

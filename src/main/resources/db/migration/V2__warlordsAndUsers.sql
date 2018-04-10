@@ -21,14 +21,14 @@ CREATE TABLE orders(
 CREATE TABLE order_types(
   id INT PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
-  order_class VARCHAR(250) NOT NULL
+  order_bean VARCHAR(250) NOT NULL
 );
 
 INSERT INTO warlords (world_id, user_id, race_id, x, y) VALUES
   (1,1,2,0,0);
 
-INSERT INTO order_types (id, name, order_class) VALUES
-  (1,"Movement","MovementOrder");
+INSERT INTO order_types (id, name, order_bean) VALUES
+  (1,"Movement","movementOrder");
 
 INSERT INTO orders (warlord_id, order_type, order_params) VALUES
   (1,1,"north"),

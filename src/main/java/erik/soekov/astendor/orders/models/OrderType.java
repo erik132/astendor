@@ -11,15 +11,15 @@ public class OrderType {
     @Id
     private Integer id;
     private String name;
-    private String orderClass;
+    private String orderBean;
 
     public OrderType() {
     }
 
-    public OrderType(Integer id, String name, String orderClass) {
+    public OrderType(Integer id, String name, String orderBean) {
         this.id = id;
         this.name = name;
-        this.orderClass = orderClass;
+        this.orderBean = orderBean;
     }
 
     public Integer getId() {
@@ -38,11 +38,11 @@ public class OrderType {
         this.name = name;
     }
 
-    public String getOrderClass() {
-        return orderClass;
+    public String getOrderBean() {
+        return orderBean;
     }
 
-    public void setOrderClass(String orderClass) {
-        this.orderClass = orderClass;
+    public void setOrderBean(String orderBean) {
+        this.orderBean = orderBean;
     }
 }

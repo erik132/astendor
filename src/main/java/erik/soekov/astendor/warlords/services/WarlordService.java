@@ -5,4 +5,5 @@ import erik.soekov.astendor.warlords.model.Warlord;
 public interface WarlordService {
 
     public Warlord getWarlord(Integer id);
+    public void setWarlord(Warlord warlord);
 }
