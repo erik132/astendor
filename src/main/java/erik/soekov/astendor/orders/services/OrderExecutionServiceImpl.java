@@ -24,23 +24,26 @@ public class OrderExecutionServiceImpl implements OrderExecutionService {
 
     @Override
     public void executeWarlordOrders(Warlord warlord) {
-        List<Order> orders = this.orderRepository.getWarlordOrders(warlord);
-        System.out.println("nr of orders: " + orders.size());
-        for(Order order: orders) {
+        Order order = this.orderRepository.findFirstByWarlord(warlord);
 
-            try{
-                OrderFrame frame = (OrderFrame) this.appContext.getBean(order.getOrderType().getOrderBean());
-                frame.setParams(order.getOrderParams());
-                frame.executeOrder(warlord);
-            }catch (BeansException be){
-                //just skip the order and log error
-                System.out.println("can not obtain bean " + order.getOrderType().getOrderBean());
-            }catch (Exception e){
-                //not important in prototype, just log error
-                System.out.println("error when parsing bean name " + order.getOrderType().getOrderBean());
-                e.printStackTrace();
-            }
+        if(order == null){
+            return;
         }
+
+        try{
+            OrderFrame frame = (OrderFrame) this.appContext.getBean(order.getOrderType().getOrderBean());
+            frame.setParams(order.getOrderParams());
+            frame.executeOrder(warlord);
+        }catch (BeansException be){
+            //just skip the order and log error
+            System.out.println("can not obtain bean " + order.getOrderType().getOrderBean());
+        }catch (Exception e){
+            //not important in prototype, just log error
+            System.out.println("error when parsing bean name " + order.getOrderType().getOrderBean());
+            e.printStackTrace();
+        }
+
+        this.orderRepository.delete(order);
     }
 
     @Override

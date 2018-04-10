@@ -15,4 +15,7 @@ public interface OrderRepository extends CrudRepository<Order, OrderIdentity> {
 
     @Query("SELECT o FROM Order o WHERE o.warlord = :warlord")
     List<Order> getWarlordOrders(@Param("warlord") Warlord warlord);
+
+
+    Order findFirstByWarlord(@Param("warlord") Warlord warlord);
 }
