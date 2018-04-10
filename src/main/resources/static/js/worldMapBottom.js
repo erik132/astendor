@@ -20,6 +20,10 @@ function initmap(){
     mapview.getState();
 }
 
+function updateState(){
+    mapview.getState();
+}
+
 
 //---------------------------------------------------
 //

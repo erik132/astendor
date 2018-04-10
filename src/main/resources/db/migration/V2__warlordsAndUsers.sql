@@ -26,7 +26,7 @@ CREATE TABLE order_types(
 );
 
 INSERT INTO warlords (world_id, user_id, race_id, x, y) VALUES
-  (1,1,2,0,0);
+  (1,1,2,1,1);
 
 INSERT INTO order_types (id, name, order_bean) VALUES
   (1,"Movement","movementOrder");
