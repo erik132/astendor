@@ -42,6 +42,7 @@ var mapview = new Vue({
             this.$http.post("/endturn/1/").then(function (response) {
                 console.log("success");
                 console.log(response.data);
+                this.getState();
             },function(response) {
                 console.log("error ending turn");
                 console.log(response.data);
@@ -49,14 +50,16 @@ var mapview = new Vue({
         },
         getState(){
             this.$http.post("/worldstate/get/1").then(function(response){
-
-               this.setWarlordPos(response.data.warlord.x, response.data.warlord.y);
-               this.warlord.id = response.data.id;
+               this.processState(response.data);
 
             }, function(response){
                 console.log("error getting world state");
                 console.log(response.data);
             });
+        },
+        processState(state){
+            this.setWarlordPos(state.warlord.x, state.warlord.y);
+            this.warlord.id = state.warlord.id;
         }
     }
 

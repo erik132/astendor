@@ -1,8 +1,10 @@
 package erik.soekov.astendor.worlds.models;
 
 import erik.soekov.astendor.maps.models.WorldMap;
+import erik.soekov.astendor.warlords.model.Warlord;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="worlds")
@@ -17,6 +19,9 @@ public class World {
     @ManyToOne
     @JoinColumn(name = "map_id", nullable = false)
     private WorldMap map;
+
+    @OneToMany(mappedBy = "world", cascade = CascadeType.ALL)
+    private Set<Warlord> warlords;
 
     public World() {
     }
@@ -60,5 +65,13 @@ public class World {
 
     public void increaseTurn(){
         this.turnNr++;
+    }
+
+    public Set<Warlord> getWarlords() {
+        return warlords;
+    }
+
+    public void setWarlords(Set<Warlord> warlords) {
+        this.warlords = warlords;
     }
 }
