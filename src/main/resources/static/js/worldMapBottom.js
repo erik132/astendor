@@ -11,6 +11,11 @@ window.onmousemove = function (e) {
     }
 };
 
+$( function() {
+    var holder = $( "#orderHolder" );
+    holder.sortable();
+    holder.disableSelection();
+} );
 
 function endturn(){
     mapview.endturn();
@@ -22,6 +27,14 @@ function initmap(){
 
 function updateState(){
     mapview.getState();
+}
+
+function addOrder(){
+
+}
+
+function saveOrders(){
+    orderSection.countChildren();
 }
 
 

@@ -8,16 +8,12 @@ Vue.component("areabanner", {
         warlord: {required: true}
     },
     mounted(){
-        console.log(this.x + ":" + this.y);
-        console.log("warlord x " + this.warlord.x);
+
     },
     computed:{
 
     },
     methods:{
-        dispWar(){
-
-        }
     }
 });
 
@@ -62,5 +58,23 @@ var mapview = new Vue({
             this.warlord.id = state.warlord.id;
         }
     }
+});
 
+var orderSection = new Vue({
+    el: "#orderSection",
+    data: {
+        msg: "tere",
+        orderHolder: "#orderHolder"
+    },
+    methods:{
+        countChildren(){
+            var items = $(this.orderHolder).sortable("toArray");
+
+            items.forEach(items=>{
+                $("#"+items).children("span").each(function(){
+                    console.log($(this).html());
+                });
+            });
+        }
+    }
 });

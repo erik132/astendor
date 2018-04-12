@@ -44,11 +44,18 @@
                     </article>
                 </div>
             </div>
-            <div class="tile is-parent">
+            <div id="orderSection" class="tile is-parent">
                 <article class="tile is-child notification is-dark">
                     <div class="content">
                         <p class="title">Warlord order section</p>
                         <button type="button" class="button" onclick="endturn()">End Turn</button>
+                        <button type="button" class="button" onclick="addOrder()">Add</button>
+                        <button type="button" class="button" onclick="saveOrders()">Save</button>
+                        <div id="orderHolder">
+                            <div id="i1"><span>Param 1</span> <span>order nr 1</span> <span>Not see this</span> </div>
+                            <div id="i2"><span>Param 2</span> <span>order nr 2</span> <span>Not see this</span> </div>
+                            <div id="i3"><span>Param 3</span> <span>order nr 3</span> <span>Not see this</span> </div>
+                        </div>
                     </div>
                 </article>
             </div>
