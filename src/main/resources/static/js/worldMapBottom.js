@@ -30,7 +30,9 @@ function updateState(){
 }
 
 function addOrder(){
-
+    orderSection.addMovementOrder("north");
+    orderSection.addMovementOrder("east");
+    orderSection.addMovementOrder("south");
 }
 
 function saveOrders(){

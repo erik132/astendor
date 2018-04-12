@@ -64,7 +64,8 @@ var orderSection = new Vue({
     el: "#orderSection",
     data: {
         msg: "tere",
-        orderHolder: "#orderHolder"
+        orderHolder: "#orderHolder",
+        currentId: 4
     },
     methods:{
         countChildren(){
@@ -75,6 +76,13 @@ var orderSection = new Vue({
                     console.log($(this).html());
                 });
             });
+        },
+        addMovementOrder(direction){
+            this.currentId++;
+            let movementOrder = `
+                <div id="order` + this.currentId +`"> <span>Move</span> <span>` + direction +`</span></div>
+            `;
+            $(this.orderHolder).append(movementOrder);
         }
     }
 });
