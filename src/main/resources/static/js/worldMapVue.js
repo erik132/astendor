@@ -72,7 +72,7 @@ var orderSection = new Vue({
             var items = $(this.orderHolder).sortable("toArray");
 
             items.forEach(items=>{
-                $("#"+items).children("span").each(function(){
+                $("#"+items).children(".level-left").children("span").each(function(){
                     console.log($(this).html());
                 });
             });
@@ -86,7 +86,7 @@ var orderSection = new Vue({
                     <span class="order-type">Move</span> <span>` + direction +`</span>
                     </div>
                     <div class="level-right">
-                        <span class="icon has-text-danger">
+                        <span class="icon has-text-danger" onclick="orderSection.deleteMovementOrder('order` + this.currentId +`')">
                           <i class="fas fa-ban"></i>
                         </span>
                     </div>
@@ -94,6 +94,9 @@ var orderSection = new Vue({
                 
             `;
             $(this.orderHolder).append(movementOrder);
+        },
+        deleteMovementOrder(orderId){
+            $("#" + orderId).remove();
         }
     }
 });
