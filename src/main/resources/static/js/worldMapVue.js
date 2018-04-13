@@ -80,7 +80,18 @@ var orderSection = new Vue({
         addMovementOrder(direction){
             this.currentId++;
             let movementOrder = `
-                <div id="order` + this.currentId +`"> <span>Move</span> <span>` + direction +`</span></div>
+                
+                <div class="notification has-text-black level" id="order` + this.currentId +`">
+                    <div class="level-left">
+                    <span class="order-type">Move</span> <span>` + direction +`</span>
+                    </div>
+                    <div class="level-right">
+                        <span class="icon has-text-danger">
+                          <i class="fas fa-ban"></i>
+                        </span>
+                    </div>
+                </div>
+                
             `;
             $(this.orderHolder).append(movementOrder);
         }
