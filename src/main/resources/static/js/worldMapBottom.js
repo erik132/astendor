@@ -48,3 +48,4 @@ function saveOrders(){
 
 setEqual();
 initmap();
+initOrderSection();

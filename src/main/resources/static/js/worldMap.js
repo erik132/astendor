@@ -5,5 +5,11 @@ function setEqual(){
     });
 }
 
+function initOrderSection(){
+    var height = $("#mapview").height();
+    $(".order-holder").css({
+        'height': height + "px"
+    });
+}
 
 
