@@ -68,13 +68,32 @@ var orderSection = new Vue({
         currentId: 4
     },
     methods:{
-        countChildren(){
-            var items = $(this.orderHolder).sortable("toArray");
+        saveOrders(){
+            var orders = $(this.orderHolder).sortable("toArray");
+            var types = ["orderType", "orderParams"];
+            var orderObjectArray = [];
 
-            items.forEach(items=>{
-                $("#"+items).children(".level-left").children("span").each(function(){
-                    console.log($(this).html());
+            orders.forEach(order=>{
+                var orderObject = {warlordId: 1};
+                $("#"+order).children(".level-left").children("span").each(function(i){
+
+                    orderObject[types[i]] = $(this).html();
                 });
+                orderObjectArray.push(orderObject);
+            });
+            this.ordersToServer(orderObjectArray);
+        },
+        ordersToServer(orders){
+            orders = {warlordOrders: orders};
+
+
+            this.$http.post("/orders/save/1", JSON.stringify(orders)).then(function (response) {
+                console.log("success at sending orders");
+                console.log(response.data);
+
+            },function(response) {
+                console.log("error sending orders");
+                console.log(response.data);
             });
         },
         addMovementOrder(direction){

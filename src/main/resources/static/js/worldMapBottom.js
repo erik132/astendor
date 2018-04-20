@@ -36,7 +36,7 @@ function addOrder(){
 }
 
 function saveOrders(){
-    orderSection.countChildren();
+    orderSection.saveOrders();
 }
 
 
