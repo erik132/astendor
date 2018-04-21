@@ -4,7 +4,7 @@ import erik.soekov.astendor.warlords.model.Warlord;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="Order")
 @Table(name="orders")
 public class Order {
 
@@ -24,10 +24,10 @@ public class Order {
     public Order() {
     }
 
-    public Order( String orderParams, Warlord warlord, OrderType orderType) {
+    public Order( String orderParams, Warlord warlord, OrderIdentity orderIdentity) {
         this.orderParams = orderParams;
         this.warlord = warlord;
-        this.orderType = orderType;
+        this.orderIdentity = orderIdentity;
     }
 
     public String getOrderParams() {

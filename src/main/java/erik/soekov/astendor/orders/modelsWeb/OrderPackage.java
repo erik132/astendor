@@ -5,6 +5,7 @@ import java.util.List;
 public class OrderPackage {
 
     private List<StrippedOrder> warlordOrders;
+    private Integer warlordId;
 
     public OrderPackage() {
     }
@@ -15,5 +16,13 @@ public class OrderPackage {
 
     public void setWarlordOrders(List<StrippedOrder> warlordOrders) {
         this.warlordOrders = warlordOrders;
+    }
+
+    public Integer getWarlordId() {
+        return warlordId;
+    }
+
+    public void setWarlordId(Integer warlordId) {
+        this.warlordId = warlordId;
     }
 }

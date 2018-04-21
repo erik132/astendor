@@ -74,7 +74,7 @@ var orderSection = new Vue({
             var orderObjectArray = [];
 
             orders.forEach(order=>{
-                var orderObject = {warlordId: 1};
+                var orderObject = {};
                 $("#"+order).children(".level-left").children("span").each(function(i){
 
                     orderObject[types[i]] = $(this).html();
@@ -84,8 +84,8 @@ var orderSection = new Vue({
             this.ordersToServer(orderObjectArray);
         },
         ordersToServer(orders){
-            orders = {warlordOrders: orders};
-
+            orders = {warlordId: 1, warlordOrders: orders};
+            console.log(JSON.stringify(orders));
 
             this.$http.post("/orders/save/1", JSON.stringify(orders)).then(function (response) {
                 console.log("success at sending orders");

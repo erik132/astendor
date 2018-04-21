@@ -3,6 +3,8 @@ package erik.soekov.astendor.orders;
 import erik.soekov.astendor.orders.modelsWeb.OrderPackage;
 import erik.soekov.astendor.orders.modelsWeb.StrippedOrder;
 import erik.soekov.astendor.orders.services.OrderExecutionService;
+import erik.soekov.astendor.orders.services.OrderService;
+import erik.soekov.astendor.warlords.model.Warlord;
 import erik.soekov.astendor.warlords.services.WarlordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,9 @@ public class OrderController {
     @Autowired
     private WarlordService warlordService;
 
+    @Autowired
+    private OrderService orderService;
+
     @RequestMapping("/executewarlord/{id}")
     public String testOrder(@PathVariable Integer id){
         this.orderExecutionService.executeWarlordOrders(this.warlordService.getWarlord(id));
@@ -32,6 +37,8 @@ public class OrderController {
         orders.forEach(order ->{
             System.out.println(order.toString());
         });
+        Warlord warlord = this.warlordService.getWarlord(orderPackage.getWarlordId());
+        this.orderService.processAndSave(orders,warlord);
         return "orders received";
     }
 }

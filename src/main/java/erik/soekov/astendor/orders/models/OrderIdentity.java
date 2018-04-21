@@ -1,6 +1,8 @@
 package erik.soekov.astendor.orders.models;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.MapsId;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -8,6 +10,7 @@ import java.io.Serializable;
 public class OrderIdentity implements Serializable {
 
     @NotNull
+    @Column(name = "warlord_id")
     private Integer warlordId;
     @NotNull
     private Integer orderNr;

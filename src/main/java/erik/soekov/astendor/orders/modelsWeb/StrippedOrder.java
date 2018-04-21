@@ -2,20 +2,11 @@ package erik.soekov.astendor.orders.modelsWeb;
 
 public class StrippedOrder {
 
-    private Integer warlordId;
     private String orderType;
     private String orderParams;
 
 
     public StrippedOrder() {
-    }
-
-    public Integer getWarlordId() {
-        return warlordId;
-    }
-
-    public void setWarlordId(Integer warlordId) {
-        this.warlordId = warlordId;
     }
 
     public String getOrderParams() {
@@ -36,6 +27,6 @@ public class StrippedOrder {
 
     @Override
     public String toString() {
-        return this.warlordId + " : " + this.orderType + " : " + this.orderParams;
+        return this.orderType + " : " + this.orderParams;
     }
 }
