@@ -13,6 +13,7 @@ public class OrderPrimitive {
     private OrderIdentity orderIdentity;
     @Column(name = "order_type")
     private Integer orderType;
+    @Column(name = "order_params")
     private String orderParams;
 
     public OrderPrimitive() {

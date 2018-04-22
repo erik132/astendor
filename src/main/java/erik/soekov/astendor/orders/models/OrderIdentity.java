@@ -13,6 +13,7 @@ public class OrderIdentity implements Serializable {
     @Column(name = "warlord_id")
     private Integer warlordId;
     @NotNull
+    @Column(name = "order_nr")
     private Integer orderNr;
 
     public OrderIdentity() {

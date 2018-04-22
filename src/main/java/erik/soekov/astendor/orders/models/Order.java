@@ -10,6 +10,7 @@ public class Order {
 
     @EmbeddedId
     private OrderIdentity orderIdentity;
+    @Column(name = "order_params")
     private String orderParams;
 
     @ManyToOne

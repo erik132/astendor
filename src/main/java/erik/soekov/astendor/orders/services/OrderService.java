@@ -11,4 +11,5 @@ public interface OrderService {
     public void processAndSave(List<StrippedOrder> orders , Warlord warlord);
     public void saveOrders(List<Order> orders);
     public void saveOrder(Order order);
+    public void deleteWarlordOrders(Warlord warlord);
 }
