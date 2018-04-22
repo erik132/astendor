@@ -11,14 +11,17 @@ public class MovementOrder extends OrderFrame{
     private final String west = "west";
     private final String north = "north";
 
-    private Integer moveX = 0;
-    private Integer moveY = 0;
+    private Integer moveX;
+    private Integer moveY;
 
     public MovementOrder() {
+
     }
 
     @Override
     public void setParams(String params) {
+        this.moveX=0;
+        this.moveY=0;
         switch (params){
             case east:
                 this.moveX = 1;
@@ -47,6 +50,9 @@ public class MovementOrder extends OrderFrame{
         x += this.moveX;
         y += this.moveY;
 
+        System.out.println("original warlord pos: " + x + " : " + y);
+        System.out.println("warlord movements: " + this.moveX + " : " + this.moveY);
+
         if(x < 0){
             x = 0;
         }
@@ -59,7 +65,7 @@ public class MovementOrder extends OrderFrame{
         if(y >= map.getYdim()){
             y = map.getYdim() -1;
         }
-
+        System.out.println("new warlord pos: " + x + " : " + y);
         warlord.setX(x);
         warlord.setY(y);
         this.warlordService.setWarlord(warlord);
