@@ -3,6 +3,8 @@ package erik.soekov.astendor.orders.orderTypes;
 import erik.soekov.astendor.maps.models.WorldMap;
 import erik.soekov.astendor.warlords.model.Warlord;
 
+import java.awt.*;
+
 
 public class MovementOrder extends OrderFrame{
 
@@ -11,47 +13,45 @@ public class MovementOrder extends OrderFrame{
     private final String west = "west";
     private final String north = "north";
 
-    private Integer moveX;
-    private Integer moveY;
 
     public MovementOrder() {
 
     }
 
-    @Override
-    public void setParams(String params) {
-        this.moveX=0;
-        this.moveY=0;
+
+    private Point translParams(String params) {
+        Integer moveX=0;
+        Integer moveY=0;
         switch (params){
             case east:
-                this.moveX = 1;
+                moveX = 1;
                 break;
             case west:
-                this.moveX = -1;
+                moveX = -1;
                 break;
             case south:
-                this.moveY = 1;
+                moveY = 1;
                 break;
             case north:
-                this.moveY = -1;
+                moveY = -1;
                 break;
                 default:
                     System.out.println("Problems interpreting warlord orders");
 
         }
+        return new Point(moveX, moveY);
     }
 
     @Override
-    public void executeOrder(Warlord warlord) {
+    public void executeOrder(String params, Warlord warlord) {
         Integer x = warlord.getX();
         Integer y = warlord.getY();
 
-        WorldMap map = warlord.getWorld().getMap();
-        x += this.moveX;
-        y += this.moveY;
+        Point movement = this.translParams(params);
 
-        System.out.println("original warlord pos: " + x + " : " + y);
-        System.out.println("warlord movements: " + this.moveX + " : " + this.moveY);
+        WorldMap map = warlord.getWorld().getMap();
+        x += movement.x;
+        y += movement.y;
 
         if(x < 0){
             x = 0;
@@ -65,7 +65,7 @@ public class MovementOrder extends OrderFrame{
         if(y >= map.getYdim()){
             y = map.getYdim() -1;
         }
-        System.out.println("new warlord pos: " + x + " : " + y);
+
         warlord.setX(x);
         warlord.setY(y);
         this.warlordService.setWarlord(warlord);

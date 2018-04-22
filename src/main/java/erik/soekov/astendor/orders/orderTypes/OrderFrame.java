@@ -9,6 +9,5 @@ public abstract class OrderFrame {
     @Autowired
     protected WarlordService warlordService;
 
-    public abstract void setParams(String params);
-    public abstract void executeOrder(Warlord warlord);
+    public abstract void executeOrder(String params,Warlord warlord);
 }

@@ -32,8 +32,7 @@ public class OrderExecutionServiceImpl implements OrderExecutionService {
 
         try{
             OrderFrame frame = (OrderFrame) this.appContext.getBean(order.getOrderType().getOrderBean());
-            frame.setParams(order.getOrderParams());
-            frame.executeOrder(warlord);
+            frame.executeOrder(order.getOrderParams(),warlord);
         }catch (BeansException be){
             //just skip the order and log error
             System.out.println("can not obtain bean " + order.getOrderType().getOrderBean());
