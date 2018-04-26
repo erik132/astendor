@@ -11,5 +11,14 @@ public class MainController {
         return "landingPage";
     }
 
+    @RequestMapping("/astendor/login")
+    public String showLoginform(){
+        return "users/login";
+    }
+
+    @RequestMapping("/astendor/worldlist")
+    public String showWorldList(){
+        return "astendor/worldList";
+    }
 
 }
