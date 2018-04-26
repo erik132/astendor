@@ -28,7 +28,7 @@ INSERT INTO roles (id, role) VALUES
   (2,"STANDARD");
 
 INSERT INTO users (active, email, username, password) VALUES
-  (1,"erik@erik.com", "sabre", "pliiats");
+  (1,"erik@erik.com", "sabre", "$2a$11$gXky4oRSN8OBEcnCWrQy2OM.q9v4Mh79j2tp/sv9SX64eglcI24Qa");
 
 INSERT INTO user_roles (user_id, role_id) VALUES
   (1,1);

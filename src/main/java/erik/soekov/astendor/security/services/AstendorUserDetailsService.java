@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,9 @@ public class AstendorUserDetailsService implements UserDetailsService, AstendorU
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -38,6 +42,7 @@ public class AstendorUserDetailsService implements UserDetailsService, AstendorU
 
         user = this.userRepository.findByUsername(userDTO.getUsername());
         if(user == null){
+            userDTO.setPassword(this.passwordEncoder.encode(userDTO.getPassword()));
             this.userRepository.save(new User(userDTO));
         }else{
             throw new UsernameExistsException();
