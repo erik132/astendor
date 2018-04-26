@@ -1,13 +1,11 @@
 package erik.soekov.astendor.security.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role implements Comparable{
 
     @Id
     @Column(name = "id")
@@ -16,6 +14,11 @@ public class Role {
     private String role;
 
     public Role() {
+    }
+
+    public Role(Integer id, String role) {
+        this.id = id;
+        this.role = role;
     }
 
     public Integer getId() {
@@ -32,5 +35,21 @@ public class Role {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        if(o.getClass() != Role.class){
+            throw new ClassCastException();
+        }
+        Role target = (Role)o;
+
+        if(target.getId() == this.id){
+            return 0;
+        }if(target.getId() > this.id){
+            return -1;
+        }
+        return 1;
     }
 }

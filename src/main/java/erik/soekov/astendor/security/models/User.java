@@ -1,7 +1,11 @@
 package erik.soekov.astendor.security.models;
 
+import erik.soekov.astendor.security.dtos.UserDTO;
+
 import javax.persistence.*;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 @Entity
 @Table(name = "users")
@@ -21,12 +25,21 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Set<Role> roles;
 
     public User() {
+    }
+
+    public User(UserDTO userDTO){
+        this.username = userDTO.getUsername();
+        this.password = userDTO.getPassword();
+        this.email = userDTO.getEmail();
+        this.active = 1;
+        this.roles = new TreeSet<>();
+        roles.add(new Role(2, "STANDARD"));
     }
 
     public Integer getId() {

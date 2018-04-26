@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Astendor registration</title>
+</head>
+<body>
+<h1>Registrazia</h1>
+<form action="/security/registration" th:object="${user}" method="POST" enctype="utf8">
+    <div>
+        <label >email</label>
+        <input th:field="*{email}"/>
+        <p th:each="error: ${#fields.errors('email')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label >username</label>
+        <input th:field="*{username}"/>
+        <p th:each="error: ${#fields.errors('username')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label >password</label>
+        <input type="password" th:field="*{password}"/>
+        <p th:each="error : ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label >password again</label>
+        <input type="password" th:field="*{matchingPassword}"/>
+        <p th:each="error : ${#fields.errors('matchingPassword')}"
+           th:text="${error}">Validation error</p>
+    </div>
+
+    <button type="submit">submit</button>
+</form>
+
+<p th:if="${error}" th:text="${error}"></p>
+
+<a th:href="@{/login.html}" >login</a>
+</body>
+</html>

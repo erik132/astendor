@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <title>Spring Security Example </title>
+    <title>Astendor login</title>
 </head>
 <body>
 <div th:if="${param.error}">
@@ -13,7 +13,7 @@
     You have been logged out.
 </div>
 <p>My awesome login form</p>
-<form th:action="@{/astendor/login}" method="post">
+<form th:action="@{/security/login}" method="post">
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>

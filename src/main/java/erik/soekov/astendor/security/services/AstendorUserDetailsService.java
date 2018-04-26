@@ -1,5 +1,8 @@
 package erik.soekov.astendor.security.services;
 
+import erik.soekov.astendor.security.dtos.UserDTO;
+import erik.soekov.astendor.security.exceptions.PasswordMismatchException;
+import erik.soekov.astendor.security.exceptions.UsernameExistsException;
 import erik.soekov.astendor.security.models.AstendorUserDetails;
 import erik.soekov.astendor.security.models.User;
 import erik.soekov.astendor.security.repos.UserRepository;
@@ -10,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AstendorUserDetailsService implements UserDetailsService {
+public class AstendorUserDetailsService implements UserDetailsService, AstendorUserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -24,5 +27,20 @@ public class AstendorUserDetailsService implements UserDetailsService {
         }
 
         return new AstendorUserDetails(user);
+    }
+
+    @Override
+    public void registerUser(UserDTO userDTO) throws UsernameExistsException, PasswordMismatchException {
+        User user = null;
+        if(!userDTO.isPasswordMatch()){
+            throw new PasswordMismatchException();
+        }
+
+        user = this.userRepository.findByUsername(userDTO.getUsername());
+        if(user == null){
+            this.userRepository.save(new User(userDTO));
+        }else{
+            throw new UsernameExistsException();
+        }
     }
 }

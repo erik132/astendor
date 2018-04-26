@@ -24,7 +24,8 @@ CREATE TABLE user_roles(
 );
 
 INSERT INTO roles (id, role) VALUES
-  (1,"ADMIN");
+  (1,"ADMIN"),
+  (2,"STANDARD");
 
 INSERT INTO users (active, email, username, password) VALUES
   (1,"erik@erik.com", "sabre", "pliiats");
