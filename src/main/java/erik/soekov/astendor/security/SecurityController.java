@@ -28,15 +28,24 @@ public class SecurityController {
     @RequestMapping(method = RequestMethod.POST, value = "/registration")
     public String registerUser(@Valid UserDTO userDTO, Model model){
 
+        if(!this.isRegistrationError(userDTO,model)){
+            model.addAttribute("announcement", "Registration Success");
+        }
+        model.addAttribute("user", userDTO);
+        return "users/registration";
+    }
+
+    private boolean isRegistrationError(UserDTO userDTO, Model model){
         try{
             this.astendorUserService.registerUser(userDTO);
         }catch (PasswordMismatchException pme){
             model.addAttribute("error", "Password mismatch");
+            return true;
         }catch (UsernameExistsException uee){
             model.addAttribute("error", "Username already exists");
+            return true;
         }
-        model.addAttribute("user", userDTO);
-        return "users/registration";
+        return false;
     }
 
     @RequestMapping("/login")
