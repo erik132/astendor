@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/worlds")
 public class WorldController {
 
     @Autowired
     private WorldService worldService;
 
-    @RequestMapping(method = RequestMethod.GET,value = "/world/{id}")
+    @RequestMapping(method = RequestMethod.GET,value = "/get/{id}")
     public String intoWorld(@PathVariable Integer id, Model model){
         World world = this.worldService.getWorld(id);
         model.addAttribute("worldmap",world.getMap());

@@ -7,7 +7,7 @@
 <body>
     <p>Astendor world list</p>
     <ul th:each="world : ${worlds}">
-        <li th:text="${world.getId()} + ' ' + ${world.getName()}"></li>
+        <li><a th:href="'/worlds/get/' + ${world.getId()}" th:text="${world.getId()} + ' ' + ${world.getName()}"></a></li>
     </ul>
 </body>
 </html>
