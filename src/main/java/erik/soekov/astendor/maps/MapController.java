@@ -15,9 +15,9 @@ public class MapController {
     @Autowired
     private MapService mapService;
 
-    @RequestMapping("/map")
+    /*@RequestMapping("/map")
     public String mapview(Model model){
         model.addAttribute("worldmap", mapService.getMap(2));
         return "main/mapview";
-    }
+    }*/
 }

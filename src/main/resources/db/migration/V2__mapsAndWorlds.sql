@@ -3,7 +3,9 @@ DROP TABLE IF EXISTS maptiles;
 DROP TABLE IF EXISTS terrains;
 DROP TABLE IF EXISTS races;
 DROP TABLE IF EXISTS worlds;
+DROP TABLE IF EXISTS world_tiles;
 
+#map is a template, world is the implementation of that template
 CREATE TABLE maps (
   id INT  AUTO_INCREMENT PRIMARY KEY,
   xdim INT(4) NOT NULL,
@@ -18,6 +20,16 @@ CREATE TABLE worlds(
   name VARCHAR(30) NOT NULL,
   map_id INT NOT NULL,
   turn_nr INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE world_tiles(
+  world_id INT NOT NULL,
+  x INT(4) NOT NULL,
+  y INT(4) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  terrain_id INT NOT NULL,
+  race_id INT NOT NULL,
+  PRIMARY KEY (world_id,x,y)
 );
 
 CREATE TABLE maptiles(
@@ -86,4 +98,15 @@ INSERT INTO maptiles(map_id, x, y, name, terrain_id, race_id) VALUES
   (2,0,2, "Lazarus Wetlands", 6, 1),
   (2,1,2, "Guay ruins", 7, 3),
   (2,2,2, "Evergrowth", 5, 3);
+
+INSERT INTO world_tiles(world_id, x, y, name, terrain_id, race_id) VALUES
+  (1,0,0, "Great plains", 1, 5),
+  (1,1,0, "Northern crossing", 1, 4),
+  (1,2,0, "The delta", 6, 1),
+  (1,0,1, "Western plains", 1, 5),
+  (1,1,1, "Royal mountains", 2, 2),
+  (1,2,1, "Eastern hills", 7, 2),
+  (1,0,2, "Lazarus Wetlands", 6, 1),
+  (1,1,2, "Guay ruins", 7, 3),
+  (1,2,2, "Evergrowth", 5, 3);
 
