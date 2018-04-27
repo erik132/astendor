@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Astendor World list</title>
 </head>
 <body>
-    <p>One day here be the world list</p>
+    <p>Astendor world list</p>
+    <ul th:each="world : ${worlds}">
+        <li th:text="${world.getId()} + ' ' + ${world.getName()}"></li>
+    </ul>
 </body>
 </html>
