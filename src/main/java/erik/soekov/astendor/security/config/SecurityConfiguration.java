@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/", "/security/registration*").permitAll()
+                .antMatchers("/", "/security/registration*", "/webjars/**", "/astendorpublic/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/security/login").defaultSuccessUrl("/astendor/worldlist").permitAll();
     }

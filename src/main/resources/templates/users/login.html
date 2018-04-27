@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Astendor login</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bulma/0.6.2/css/bulma.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/astendorpublic/css/login.css}">
+    <script type="text/javascript" th:src="@{/webjars/font-awesome/5.0.9/svg-with-js/js/fontawesome-all.js}"></script>
 </head>
 <body>
 <div th:if="${param.error}">
@@ -12,11 +16,41 @@
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-<p>My awesome login form</p>
-<form th:action="@{/security/login}" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
+
+<section class="hero is-success is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-grey">Login</h3>
+                <p class="subtitle has-text-grey">Please login to proceed.</p>
+                <div class="box">
+                    <figure class="avatar">
+                        <img th:src="@{/astendorpublic/images/redSword.png}">
+                    </figure>
+                    <form th:action="@{/security/login}" method="post">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" type="text" name="username" placeholder="Your Username" autofocus="">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" type="password" name="password" placeholder="Your Password">
+                            </div>
+                        </div>
+
+                        <input class="button is-block is-info is-large is-fullwidth" type="submit" value="Login">
+                    </form>
+                </div>
+                <p class="has-text-grey">
+                    <a href="/security/registration">Sign Up</a> &nbsp;·&nbsp;
+                    <a href="#">Forgot Password</a> &nbsp;·&nbsp;
+                    <a href="#">Need Help?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
