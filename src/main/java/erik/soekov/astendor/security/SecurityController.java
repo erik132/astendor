@@ -53,5 +53,15 @@ public class SecurityController {
         return "users/login";
     }
 
+    @RequestMapping("/forgotpassword")
+    public String showForgotPasswordPage(){
+        return "users/forgotPassword";
+    }
+
+    @RequestMapping("/needhelp")
+    public String showHelpPage(){
+        return "users/needHelp";
+    }
+
 
 }
