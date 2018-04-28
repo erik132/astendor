@@ -20,7 +20,7 @@
                 <div class="tile is-parent">
                     <div class="tile is-child notification is-dark">
 
-                        <div id="mapview" th:style="'background-image:url(/maps/'+ ${worldmap.getMapFile()} +');'" class="map-background">
+                        <div id="mapview" th:style="'background-image:url(/maps/'+ ${worldmap.getMap().getMapFile()} +');'" class="map-background">
                             <div class="is-gapless" th:each="row : ${worldmap.yxTiles()}">
                                 <div class="columns is-gapless is-mobile">
                                     <div class="column notification map-strech maptile maptip" th:each="tile: ${row}">

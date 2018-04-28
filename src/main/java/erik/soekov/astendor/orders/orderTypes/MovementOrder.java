@@ -1,6 +1,7 @@
 package erik.soekov.astendor.orders.orderTypes;
 
 import erik.soekov.astendor.maps.models.WorldMap;
+import erik.soekov.astendor.maps.models.WorldMapPrimitive;
 import erik.soekov.astendor.warlords.model.Warlord;
 
 import java.awt.*;
@@ -49,7 +50,7 @@ public class MovementOrder extends OrderFrame{
 
         Point movement = this.translParams(params);
 
-        WorldMap map = warlord.getWorld().getMap();
+        WorldMapPrimitive map = warlord.getWorld().getMap();
         x += movement.x;
         y += movement.y;
 

@@ -19,7 +19,7 @@ public class WorldController {
     @RequestMapping(method = RequestMethod.GET,value = "/get/{id}")
     public String intoWorld(@PathVariable Integer id, Model model){
         World world = this.worldService.getWorld(id);
-        model.addAttribute("worldmap",world.getMap());
+        model.addAttribute("worldmap",world);
         return "main/mapview";
     }
 }

@@ -24,6 +24,11 @@ public class WorldTile {
     @JoinColumn(name="race_id", nullable = false)
     private Race race;
 
+    @ManyToOne
+    @MapsId("worldId")
+    @JoinColumn(name="world_id", nullable = false)
+    private World world;
+
     public WorldTile() {
     }
 
@@ -57,5 +62,21 @@ public class WorldTile {
 
     public void setRace(Race race) {
         this.race = race;
+    }
+
+    public Integer getX(){
+        return this.id.getX();
+    }
+
+    public Integer getY(){
+        return this.id.getY();
+    }
+
+    public World getWorld() {
+        return world;
+    }
+
+    public void setWorld(World world) {
+        this.world = world;
     }
 }
