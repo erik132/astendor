@@ -89,18 +89,5 @@ public class WorldMap {
     public void setMapFile(String mapFile) {
         this.mapFile = mapFile;
     }
-
-    public List<List<MapTile>> yxTiles(){
-        List<List<MapTile>> result = new ArrayList<>();
-
-        for(Integer i=0; i< this.getYdim(); i++){
-            result.add(new ArrayList<>());
-        }
-
-        this.getTiles().forEach(tile ->{
-            result.get(tile.getY()).add(tile.getX(),tile);
-        });
-
-        return result;
-    }
+    
 }
