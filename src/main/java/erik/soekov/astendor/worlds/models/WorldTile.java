@@ -1,5 +1,6 @@
 package erik.soekov.astendor.worlds.models;
 
+import erik.soekov.astendor.maps.models.MapTile;
 import erik.soekov.astendor.maps.models.Race;
 import erik.soekov.astendor.maps.models.Terrain;
 
@@ -30,6 +31,14 @@ public class WorldTile {
     private World world;
 
     public WorldTile() {
+    }
+
+    public WorldTile(MapTile mapTile, World world){
+        this.id = new WorldTileIdentity(world.getId(),mapTile.getX(), mapTile.getY());
+        this.name = mapTile.getName();
+        this.terrain = mapTile.getTerrain();
+        this.race = mapTile.getRace();
+        this.world = world;
     }
 
     public WorldTileIdentity getId() {

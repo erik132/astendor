@@ -4,9 +4,11 @@ import erik.soekov.astendor.maps.models.MapTile;
 import erik.soekov.astendor.maps.models.WorldMap;
 import erik.soekov.astendor.maps.models.WorldMapPrimitive;
 import erik.soekov.astendor.warlords.model.Warlord;
+import erik.soekov.astendor.worlds.dto.WorldDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +34,17 @@ public class World {
     private Set<WorldTile> tiles;
 
     public World() {
+    }
+
+    public World(WorldDTO worldDTO,WorldMapPrimitive minMap, Set<MapTile> tiles){
+        this.name = worldDTO.getName();
+        this.turnNr = 0;
+        this.map = minMap;
+        this.warlords = new HashSet<>();
+        this.tiles = new HashSet<>();
+        tiles.forEach(mapTile -> {
+            this.tiles.add(new WorldTile(mapTile, this));
+        });
     }
 
     public World(String name, WorldMapPrimitive map) {

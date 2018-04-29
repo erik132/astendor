@@ -43,6 +43,7 @@ public class WorldController {
     public String makeNewWorld(@Valid WorldDTO worldDTO, Model model){
 
         System.out.println(worldDTO.toString());
+        this.worldService.createWorld(worldDTO);
 
         model.addAttribute("worldDTO", worldDTO);
         model.addAttribute("maps", this.mapService.getPrimitiveMaps());

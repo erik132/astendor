@@ -9,4 +9,5 @@ public interface MapService {
 
     public WorldMap getMap(Integer id);
     public List<WorldMapPrimitive> getPrimitiveMaps();
+    public WorldMapPrimitive getMinMap(Integer id);
 }

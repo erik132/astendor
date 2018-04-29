@@ -31,4 +31,9 @@ public class MapServiceImpl implements MapService {
 
         return results;
     }
+
+    @Override
+    public WorldMapPrimitive getMinMap(Integer id) {
+        return this.mapPrimitiveRepository.findById(id).get();
+    }
 }
