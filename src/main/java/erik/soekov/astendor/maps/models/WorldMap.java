@@ -89,5 +89,5 @@ public class WorldMap {
     public void setMapFile(String mapFile) {
         this.mapFile = mapFile;
     }
-    
+
 }
