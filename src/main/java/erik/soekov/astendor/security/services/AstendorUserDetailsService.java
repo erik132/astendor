@@ -48,4 +48,9 @@ public class AstendorUserDetailsService implements UserDetailsService, AstendorU
             throw new UsernameExistsException();
         }
     }
+
+    @Override
+    public User findByUsername(String username) {
+        return this.userRepository.findByUsername(username);
+    }
 }

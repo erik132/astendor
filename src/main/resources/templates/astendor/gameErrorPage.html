@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>There was an error in game logic.</p>
+    <p th:text="${errorMsg}"></p>
+    <a th:if="${returnPage}" th:href="${returnPage}">Return to last page</a>
+    <a th:if="!${returnPage}" href="/">Return to main</a>
+</body>
+</html>

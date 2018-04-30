@@ -14,6 +14,9 @@ public class Warlord {
     private int x;
     private int y;
 
+    @Column(name = "user_id")
+    private Integer userId;
+
     @ManyToOne
     @JoinColumn(name = "world_id", nullable = false)
     private World world;
@@ -57,6 +60,14 @@ public class Warlord {
 
     public void setWorld(World world) {
         this.world = world;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override
