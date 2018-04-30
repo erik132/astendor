@@ -22,6 +22,6 @@
     </form>
 
     <p th:if="${announcement}" th:text="${announcement}"></p>
-    <a href="/astendor/worldlist">back to world list</a>
+    <a th:href="${linklib.worldList}">back to world list</a>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package erik.soekov.astendor.security.config;
 
+import erik.soekov.astendor.general.constants.LinkLib;
 import erik.soekov.astendor.security.services.AstendorUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/security/registration*", "/security/forgotpassword", "/security/needhelp", "/webjars/**", "/astendorpublic/**").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/security/login").defaultSuccessUrl("/astendor/worldlist").permitAll();
+                .and().formLogin().loginPage("/security/login").defaultSuccessUrl(LinkLib.worldList).permitAll();
     }
 
     @Bean

@@ -1,5 +1,6 @@
 package erik.soekov.astendor.worlds;
 
+import erik.soekov.astendor.general.constants.LinkLib;
 import erik.soekov.astendor.maps.services.MapService;
 import erik.soekov.astendor.security.models.User;
 import erik.soekov.astendor.security.services.AstendorUserDetailsService;
@@ -42,7 +43,7 @@ public class WorldController {
             return "worlds/mapview";
         }
         return this.goError("You do not have a warlord in this world",
-                "/astendor/worldlist",
+                LinkLib.worldList,
                 model);
 
 
@@ -53,6 +54,7 @@ public class WorldController {
     public String showWorldCreationPage(Model model){
         model.addAttribute("worldDTO", new WorldDTO());
         model.addAttribute("maps", this.mapService.getPrimitiveMaps());
+        model.addAttribute("linklib", new LinkLib());
         return "admins/createWorld";
     }
 
@@ -64,8 +66,16 @@ public class WorldController {
 
         model.addAttribute("worldDTO", worldDTO);
         model.addAttribute("maps", this.mapService.getPrimitiveMaps());
+        model.addAttribute("linklib", new LinkLib());
         model.addAttribute("announcement", "New world created");
         return "admins/createWorld";
+    }
+
+    @RequestMapping("/worldlist")
+    public String showWorldList(Model model){
+        Iterable<World> worlds = this.worldService.getActiveWorlds();
+        model.addAttribute("worlds", worlds);
+        return LinkLib.worldList;
     }
 
     private String goError(String errorMsg, String returnPage, Model model){
