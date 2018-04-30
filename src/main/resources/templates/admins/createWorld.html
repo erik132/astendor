@@ -20,5 +20,8 @@
            th:text="${error}">Validation error</p>
         <input type="submit" value="Create world">
     </form>
+
+    <p th:if="${announcement}" th:text="${announcement}"></p>
+    <a href="/astendor/worldlist">back to world list</a>
 </body>
 </html>

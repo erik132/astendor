@@ -64,6 +64,7 @@ public class WorldController {
 
         model.addAttribute("worldDTO", worldDTO);
         model.addAttribute("maps", this.mapService.getPrimitiveMaps());
+        model.addAttribute("announcement", "New world created");
         return "admins/createWorld";
     }
 
