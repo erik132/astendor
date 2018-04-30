@@ -3,6 +3,7 @@ package erik.soekov.astendor.worlds.models;
 import erik.soekov.astendor.maps.models.MapTile;
 import erik.soekov.astendor.maps.models.WorldMap;
 import erik.soekov.astendor.maps.models.WorldMapPrimitive;
+import erik.soekov.astendor.security.models.User;
 import erik.soekov.astendor.warlords.model.Warlord;
 import erik.soekov.astendor.worlds.dto.WorldDTO;
 
@@ -64,6 +65,17 @@ public class World {
         });
 
         return result;
+    }
+
+    public boolean checkForWarlord(User user){
+
+        for(Warlord warlord : this.getWarlords()){
+            if(warlord.getUserId() == user.getId()){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public Integer getId() {

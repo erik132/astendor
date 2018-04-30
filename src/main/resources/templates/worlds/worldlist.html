@@ -5,9 +5,13 @@
     <title>Astendor World list</title>
 </head>
 <body>
-    <p>Astendor world list</p>
-    <ul th:each="world : ${worlds}">
-        <li><a th:href="'/worlds/get/' + ${world.getId()}" th:text="${world.getId()} + ' ' + ${world.getName()}"></a></li>
+    <p th:if="${yourWorlds.size()}"> your worlds</p>
+    <ul th:if="${yourWorlds.size()}">
+       <li th:each="yourWorld : ${yourWorlds}"><a th:href="'/worlds/get/' + ${yourWorld.getId()}" th:text="${yourWorld.getId()} + ' ' + ${yourWorld.getName()}"></a></li>
+    </ul>
+    <p>All Worlds</p>
+    <ul>
+        <li th:each="world : ${worlds}"><a th:href="'/worlds/get/' + ${world.getId()}" th:text="${world.getId()} + ' ' + ${world.getName()}"></a></li>
     </ul>
 </body>
 </html>

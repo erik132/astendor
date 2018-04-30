@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/worlds")
@@ -38,7 +40,7 @@ public class WorldController {
         World world = this.worldService.getWorld(id);
         User user =  userService.findByUsername(authentication.getName());
 
-        if(this.checkForWarlord(user, world)){
+        if(world.checkForWarlord(user)){
             model.addAttribute("worldmap",world);
             return "worlds/mapview";
         }
@@ -72,9 +74,18 @@ public class WorldController {
     }
 
     @RequestMapping("/worldlist")
-    public String showWorldList(Model model){
+    public String showWorldList(Authentication authentication,Model model){
+        User user =  userService.findByUsername(authentication.getName());
         Iterable<World> worlds = this.worldService.getActiveWorlds();
+        List<World> yourWorlds = new ArrayList<>();
+
+        worlds.forEach(world -> {
+            if(world.checkForWarlord(user)){
+                yourWorlds.add(world);
+            }
+        });
         model.addAttribute("worlds", worlds);
+        model.addAttribute("yourWorlds",yourWorlds);
         return LinkLib.worldList;
     }
 
@@ -84,14 +95,5 @@ public class WorldController {
         return "/astendor/gameErrorPage";
     }
 
-    private boolean checkForWarlord(User user, World world){
 
-        for(Warlord warlord : world.getWarlords()){
-            if(warlord.getUserId() == user.getId()){
-                return true;
-            }
-        }
-
-        return false;
-    }
 }
