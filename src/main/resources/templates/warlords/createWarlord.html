@@ -8,12 +8,13 @@
 <body>
     <p>Customise your warlord</p>
     <form th:action="'/warlords/create/' + ${world.getId()}" method="post" enctype="utf8">
-        <p th:text="'You will join world '"><b th:text="${world.getName()}"></b></p>
+        <p>You will join world <b th:text="${world.getName()}"></b></p>
         <input type="hidden" name="worldId" th:value="${world.getId()}">
         <select name="warlordRace">
             <option th:each="race : ${races}" th:value="${race.getId()}" th:text="${race.getName()}"></option>
         </select>
         <input type="submit" value="Create">
     </form>
+    <p th:if="${announcement}" th:text="${announcement}"></p>
 </body>
 </html>

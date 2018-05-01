@@ -31,6 +31,8 @@ public class WarlordController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/create/{worldId}")
     public String createWarlord(@PathVariable Integer worldId,Model model){
+
+        model.addAttribute("announcement", "warlord created successfully");
         return this.loadWarlordCreation(worldId,model);
     }
 
