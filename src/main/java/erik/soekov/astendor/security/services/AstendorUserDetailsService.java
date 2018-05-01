@@ -7,6 +7,7 @@ import erik.soekov.astendor.security.models.AstendorUserDetails;
 import erik.soekov.astendor.security.models.User;
 import erik.soekov.astendor.security.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -52,5 +53,10 @@ public class AstendorUserDetailsService implements UserDetailsService, AstendorU
     @Override
     public User findByUsername(String username) {
         return this.userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User findByAuthentication(Authentication authentication) {
+        return this.userRepository.findByUsername(authentication.getName());
     }
 }

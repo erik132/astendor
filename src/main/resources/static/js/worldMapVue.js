@@ -21,6 +21,7 @@ Vue.component("areabanner", {
 var mapview = new Vue({
     el: "#mapview",
     data: {
+        worldId: 1,
         warlord:{
             id: 1,
             x: 1,
@@ -45,7 +46,7 @@ var mapview = new Vue({
             });
         },
         getState(){
-            this.$http.post("/worldstate/get/1").then(function(response){
+            this.$http.post("/worldstate/get/" + this.worldId).then(function(response){
                this.processState(response.data);
 
             }, function(response){

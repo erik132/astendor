@@ -69,14 +69,19 @@ public class World {
     }
 
     public boolean checkForWarlord(User user){
+        if(this.findWarlord(user) != null){
+            return true;
+        }
+        return false;
+    }
 
+    public Warlord findWarlord(User user){
         for(Warlord warlord : this.getWarlords()){
-            if(warlord.getUserId() == user.getId()){
-                return true;
+            if(warlord.getUserId().equals(user.getId())){
+                return warlord;
             }
         }
-
-        return false;
+        return null;
     }
 
     public Integer getId() {

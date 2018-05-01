@@ -22,6 +22,7 @@ function endturn(){
 }
 
 function initmap(){
+    mapview.worldId = worldId;
     mapview.getState();
 }
 
