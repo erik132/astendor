@@ -11,7 +11,7 @@
     </ul>
     <p>All Worlds</p>
     <ul>
-        <li th:each="world : ${worlds}"><a th:href="'/worlds/get/' + ${world.getId()}" th:text="${world.getId()} + ' ' + ${world.getName()}"></a></li>
+        <li th:each="world : ${worlds}"><a th:href="'/warlords/create/' + ${world.getId()}" th:text="${world.getId()} + ' ' + ${world.getName()}"></a></li>
     </ul>
 </body>
 </html>

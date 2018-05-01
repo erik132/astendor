@@ -1,5 +1,6 @@
 package erik.soekov.astendor.warlords;
 
+import erik.soekov.astendor.general.constants.LinkLib;
 import erik.soekov.astendor.maps.models.Race;
 import erik.soekov.astendor.orders.services.RaceService;
 import erik.soekov.astendor.worlds.models.WorldPrimitive;
@@ -39,6 +40,7 @@ public class WarlordController {
     private String loadWarlordCreation(Integer worldId, Model model){
         WorldPrimitive world = this.worldService.getWorldPrimitive(worldId);
         List<Race> races = this.raceService.getAllRaces();
+        model.addAttribute("linkLib", new LinkLib());
         model.addAttribute("world", world);
         model.addAttribute("races", races);
         return "/warlords/createWarlord";
