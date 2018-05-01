@@ -1,4 +1,4 @@
-package erik.soekov.astendor.orders.repos;
+package erik.soekov.astendor.maps.repos;
 
 import erik.soekov.astendor.maps.models.Race;
 import org.springframework.data.repository.CrudRepository;

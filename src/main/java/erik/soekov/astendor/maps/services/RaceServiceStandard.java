@@ -1,7 +1,7 @@
-package erik.soekov.astendor.orders.services;
+package erik.soekov.astendor.maps.services;
 
 import erik.soekov.astendor.maps.models.Race;
-import erik.soekov.astendor.orders.repos.RaceRepostitory;
+import erik.soekov.astendor.maps.repos.RaceRepostitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +19,10 @@ public class RaceServiceStandard implements RaceService {
         List<Race> races = new ArrayList<>();
         this.raceRepostitory.findAll().forEach(races::add);
         return races;
+    }
+
+    @Override
+    public Race getRace(Integer id) {
+        return this.raceRepostitory.findById(id).get();
     }
 }
