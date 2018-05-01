@@ -78,13 +78,15 @@ public class WorldController {
         User user =  userService.findByUsername(authentication.getName());
         Iterable<World> worlds = this.worldService.getActiveWorlds();
         List<World> yourWorlds = new ArrayList<>();
-
+        List<World> otherWorlds = new ArrayList<>();
         worlds.forEach(world -> {
             if(world.checkForWarlord(user)){
                 yourWorlds.add(world);
+            }else{
+                otherWorlds.add(world);
             }
         });
-        model.addAttribute("worlds", worlds);
+        model.addAttribute("worlds", otherWorlds);
         model.addAttribute("yourWorlds",yourWorlds);
         return LinkLib.worldList;
     }
