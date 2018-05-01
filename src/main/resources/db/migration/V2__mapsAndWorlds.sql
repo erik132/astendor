@@ -75,7 +75,7 @@ INSERT INTO maps (xdim, ydim, name, description, map_file) VALUES
   (3,3,"Montreal", "Second 3x3 test map", "montreal.jpg");
 
 INSERT INTO worlds (name, map_id) VALUES
-  ("Pernau1", 2);
+  ("Pernau", 2);
 
 INSERT INTO maptiles(map_id, x, y, name, terrain_id, race_id) VALUES
   (1,0,0, "Chaos mountain 1", 2,1),
