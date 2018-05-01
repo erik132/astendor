@@ -9,6 +9,9 @@ public class WarlordDTO {
     private Integer y;
     private Integer raceId;
 
+    public WarlordDTO() {
+    }
+
     public WarlordDTO(Warlord warlord){
         this.id = warlord.getId();
         this.x = warlord.getX();

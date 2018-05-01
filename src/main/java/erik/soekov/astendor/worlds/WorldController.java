@@ -1,5 +1,6 @@
 package erik.soekov.astendor.worlds;
 
+import erik.soekov.astendor.general.MainController;
 import erik.soekov.astendor.general.constants.LinkLib;
 import erik.soekov.astendor.maps.services.MapService;
 import erik.soekov.astendor.security.models.User;
@@ -44,11 +45,9 @@ public class WorldController {
             model.addAttribute("worldmap",world);
             return "worlds/mapview";
         }
-        return this.goError("You do not have a warlord in this world",
+        return MainController.goError("You do not have a warlord in this world",
                 LinkLib.worldList,
                 model);
-
-
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -91,11 +90,7 @@ public class WorldController {
         return LinkLib.worldList;
     }
 
-    private String goError(String errorMsg, String returnPage, Model model){
-        model.addAttribute("errorMsg", errorMsg);
-        model.addAttribute("returnPage", returnPage);
-        return "/astendor/gameErrorPage";
-    }
+
 
 
 }

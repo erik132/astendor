@@ -18,6 +18,10 @@ public class MainController {
         return "landingPage";
     }
 
-
+    public static String goError(String errorMsg, String returnPage, Model model){
+        model.addAttribute("errorMsg", errorMsg);
+        model.addAttribute("returnPage", returnPage);
+        return "/astendor/gameErrorPage";
+    }
 
 }
