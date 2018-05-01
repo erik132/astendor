@@ -6,6 +6,8 @@ import erik.soekov.astendor.maps.models.WorldMapPrimitive;
 import erik.soekov.astendor.maps.services.MapService;
 import erik.soekov.astendor.worlds.dto.WorldDTO;
 import erik.soekov.astendor.worlds.models.World;
+import erik.soekov.astendor.worlds.models.WorldPrimitive;
+import erik.soekov.astendor.worlds.repos.WorldPrimitiveRepository;
 import erik.soekov.astendor.worlds.repos.WorldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +24,17 @@ public class WorldServiceImpl implements WorldService{
     @Autowired
     private MapService mapService;
 
+    @Autowired
+    private WorldPrimitiveRepository worldPrimitiveRepository;
+
     @Override
     public World getWorld(Integer id) {
         return this.worldRepository.findById(id).get();
+    }
+
+    @Override
+    public WorldPrimitive getWorldPrimitive(Integer id) {
+        return this.worldPrimitiveRepository.findById(id).get();
     }
 
     @Override

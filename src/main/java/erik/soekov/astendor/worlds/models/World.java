@@ -21,6 +21,7 @@ public class World {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Column(name = "turn_nr")
     private Integer turnNr;
 
     @ManyToOne

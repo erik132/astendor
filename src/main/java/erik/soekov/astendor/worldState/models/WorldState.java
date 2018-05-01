@@ -1,22 +1,22 @@
 package erik.soekov.astendor.worldState.models;
 
 
-import erik.soekov.astendor.warlords.model.StrippedWarlord;
+import erik.soekov.astendor.warlords.dtos.WarlordDTO;
 
 
 public class WorldState {
 
-    private StrippedWarlord warlord;
+    private WarlordDTO warlord;
 
-    public WorldState(StrippedWarlord warlord) {
+    public WorldState(WarlordDTO warlord) {
         this.warlord = warlord;
     }
 
-    public StrippedWarlord getWarlord() {
+    public WarlordDTO getWarlord() {
         return warlord;
     }
 
-    public void setWarlord(StrippedWarlord warlord) {
+    public void setWarlord(WarlordDTO warlord) {
         this.warlord = warlord;
     }
 }

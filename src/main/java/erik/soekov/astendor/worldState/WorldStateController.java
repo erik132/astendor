@@ -1,6 +1,6 @@
 package erik.soekov.astendor.worldState;
 
-import erik.soekov.astendor.warlords.model.StrippedWarlord;
+import erik.soekov.astendor.warlords.dtos.WarlordDTO;
 import erik.soekov.astendor.warlords.services.WarlordService;
 import erik.soekov.astendor.worldState.models.WorldState;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,6 @@ public class WorldStateController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/get/{warlordid}")
     public WorldState getWorldState(@PathVariable Integer warlordid){
-        return new WorldState(new StrippedWarlord(this.warlordService.getWarlord(warlordid)));
+        return new WorldState(new WarlordDTO(this.warlordService.getWarlord(warlordid)));
     }
 }

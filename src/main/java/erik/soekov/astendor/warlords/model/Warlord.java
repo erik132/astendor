@@ -1,5 +1,6 @@
 package erik.soekov.astendor.warlords.model;
 
+import erik.soekov.astendor.maps.models.Race;
 import erik.soekov.astendor.worlds.models.World;
 
 import javax.persistence.*;
@@ -16,6 +17,10 @@ public class Warlord {
 
     @Column(name = "user_id")
     private Integer userId;
+
+    @ManyToOne
+    @JoinColumn(name = "race_id", nullable = false)
+    private Race race;
 
     @ManyToOne
     @JoinColumn(name = "world_id", nullable = false)
@@ -68,6 +73,14 @@ public class Warlord {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
     }
 
     @Override

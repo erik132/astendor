@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Customise your warlord</title>
+</head>
+<body>
+    <p>Customise your warlord</p>
+    <form th:action="'/warlords/create/' + ${world.getId()}" method="post" enctype="utf8">
+        <p th:text="'You will join world '"><b th:text="${world.getName()}"></b></p>
+        <input type="hidden" name="worldId" th:value="${world.getId()}">
+        <select name="warlordRace">
+            <option th:each="race : ${races}" th:value="${race.getId()}" th:text="${race.getName()}"></option>
+        </select>
+        <input type="submit" value="Create">
+    </form>
+</body>
+</html>

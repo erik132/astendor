@@ -1,15 +1,19 @@
-package erik.soekov.astendor.warlords.model;
+package erik.soekov.astendor.warlords.dtos;
 
-public class StrippedWarlord {
+import erik.soekov.astendor.warlords.model.Warlord;
+
+public class WarlordDTO {
 
     private Integer id;
     private Integer x;
     private Integer y;
+    private Integer raceId;
 
-    public StrippedWarlord(Warlord warlord) {
+    public WarlordDTO(Warlord warlord){
         this.id = warlord.getId();
         this.x = warlord.getX();
         this.y = warlord.getY();
+        this.raceId = warlord.getRace().getId();
     }
 
     public Integer getId() {
@@ -34,5 +38,13 @@ public class StrippedWarlord {
 
     public void setY(Integer y) {
         this.y = y;
+    }
+
+    public Integer getRaceId() {
+        return raceId;
+    }
+
+    public void setRaceId(Integer raceId) {
+        this.raceId = raceId;
     }
 }
