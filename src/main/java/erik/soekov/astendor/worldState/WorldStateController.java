@@ -4,9 +4,9 @@ import erik.soekov.astendor.security.models.User;
 import erik.soekov.astendor.security.services.AstendorUserService;
 import erik.soekov.astendor.warlords.dtos.WarlordDTO;
 import erik.soekov.astendor.warlords.model.Warlord;
-import erik.soekov.astendor.warlords.services.WarlordService;
 import erik.soekov.astendor.worldState.models.WorldState;
 import erik.soekov.astendor.worlds.models.World;
+import erik.soekov.astendor.worlds.models.WorldNoTiles;
 import erik.soekov.astendor.worlds.services.WorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,7 +28,7 @@ public class WorldStateController {
     @RequestMapping(method = RequestMethod.POST, value = "/get/{worldId}")
     public WorldState getWorldState(@PathVariable Integer worldId, Authentication authentication){
         User user = this.userService.findByAuthentication(authentication);
-        World world = this.worldService.getWorld(worldId);
+        WorldNoTiles world = this.worldService.getNoTiles(worldId);
         WorldState worldState = new WorldState();
 
         Warlord warlord = world.findWarlord(user);

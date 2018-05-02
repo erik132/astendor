@@ -41,25 +41,6 @@ public class OrderServiceStandard implements OrderService{
         }
     }
 
-    //is this stupid?
-    /*@Override
-    public void processAndSave(List<StrippedOrder> orders, Warlord warlord) {
-        List<OrderPrimitive> orderList = new ArrayList<>();
-        Integer countNr = 0;
-
-        this.deleteWarlordOrders(warlord);
-
-        for(StrippedOrder order: orders){
-            countNr++;
-            orderList.add(new OrderPrimitive(warlord.getId(),
-                    countNr,
-                    this.translateOrderType(order.getOrderType()),
-                    order.getOrderParams()));
-        }
-
-        this.orderPrimitiveRepository.saveAll(orderList);
-    }*/
-
     @Override
     public void saveOrders(OrderPackage orderPackage, User user) throws WarlordNotFoundException {
         List<OrderPrimitive> orderList = new ArrayList<>();

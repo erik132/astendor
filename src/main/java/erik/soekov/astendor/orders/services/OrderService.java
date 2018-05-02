@@ -11,7 +11,6 @@ import java.util.List;
 
 public interface OrderService {
 
-    //public void processAndSave(List<StrippedOrder> orders , Warlord warlord);
     public void saveOrders(OrderPackage orderPackage, User user) throws WarlordNotFoundException;
     public void saveOrders(List<Order> orders);
     public void saveOrder(Order order);

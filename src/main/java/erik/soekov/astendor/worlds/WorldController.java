@@ -9,6 +9,8 @@ import erik.soekov.astendor.security.services.AstendorUserService;
 import erik.soekov.astendor.warlords.model.Warlord;
 import erik.soekov.astendor.worlds.dto.WorldDTO;
 import erik.soekov.astendor.worlds.models.World;
+import erik.soekov.astendor.worlds.models.WorldNoTiles;
+import erik.soekov.astendor.worlds.models.WorldPrimitive;
 import erik.soekov.astendor.worlds.services.WorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -75,9 +77,9 @@ public class WorldController {
     @RequestMapping("/worldlist")
     public String showWorldList(Authentication authentication,Model model){
         User user =  userService.findByUsername(authentication.getName());
-        Iterable<World> worlds = this.worldService.getActiveWorlds();
-        List<World> yourWorlds = new ArrayList<>();
-        List<World> otherWorlds = new ArrayList<>();
+        Iterable<WorldNoTiles> worlds = this.worldService.getActiveWorldsNoTiles();
+        List<WorldNoTiles> yourWorlds = new ArrayList<>();
+        List<WorldNoTiles> otherWorlds = new ArrayList<>();
         worlds.forEach(world -> {
             if(world.checkForWarlord(user)){
                 yourWorlds.add(world);
@@ -89,8 +91,5 @@ public class WorldController {
         model.addAttribute("yourWorlds",yourWorlds);
         return LinkLib.worldList;
     }
-
-
-
 
 }

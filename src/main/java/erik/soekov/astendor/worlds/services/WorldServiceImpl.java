@@ -14,6 +14,7 @@ import erik.soekov.astendor.worlds.repos.WorldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -50,8 +51,24 @@ public class WorldServiceImpl implements WorldService{
     }
 
     @Override
-    public Iterable<World> getActiveWorlds() {
-        return this.worldRepository.findAll();
+    public List<World> getActiveWorlds() {
+        List<World> worlds = new ArrayList<>();
+        this.worldRepository.findAll().forEach(worlds::add);
+        return worlds;
+    }
+
+    @Override
+    public List<WorldPrimitive> getActiveWorldsMin() {
+        List<WorldPrimitive> worlds = new ArrayList<>();
+        this.worldPrimitiveRepository.findAll().forEach(worlds::add);
+        return worlds;
+    }
+
+    @Override
+    public List<WorldNoTiles> getActiveWorldsNoTiles() {
+        List<WorldNoTiles> worlds = new ArrayList<>();
+        this.noTilesRepo.findAll().forEach(worlds::add);
+        return worlds;
     }
 
     @Override

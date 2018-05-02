@@ -10,7 +10,9 @@ import java.util.List;
 public interface WorldService {
 
     public World getWorld(Integer id);
-    public Iterable<World> getActiveWorlds();
+    public List<World> getActiveWorlds();
+    public List<WorldPrimitive> getActiveWorldsMin();
+    public List<WorldNoTiles> getActiveWorldsNoTiles();
 
     public WorldPrimitive getWorldPrimitive(Integer id);
     public void IncreaseWorldTurn(Integer worldId);
