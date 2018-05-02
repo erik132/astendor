@@ -6,7 +6,9 @@ import erik.soekov.astendor.maps.models.WorldMapPrimitive;
 import erik.soekov.astendor.maps.services.MapService;
 import erik.soekov.astendor.worlds.dto.WorldDTO;
 import erik.soekov.astendor.worlds.models.World;
+import erik.soekov.astendor.worlds.models.WorldNoTiles;
 import erik.soekov.astendor.worlds.models.WorldPrimitive;
+import erik.soekov.astendor.worlds.repos.NotTilesRepository;
 import erik.soekov.astendor.worlds.repos.WorldPrimitiveRepository;
 import erik.soekov.astendor.worlds.repos.WorldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,13 @@ public class WorldServiceImpl implements WorldService{
     private WorldRepository worldRepository;
 
     @Autowired
-    private MapService mapService;
+    private WorldPrimitiveRepository worldPrimitiveRepository;
 
     @Autowired
-    private WorldPrimitiveRepository worldPrimitiveRepository;
+    private NotTilesRepository noTilesRepo;
+
+    @Autowired
+    private MapService mapService;
 
     @Override
     public World getWorld(Integer id) {
@@ -56,5 +61,10 @@ public class WorldServiceImpl implements WorldService{
 
         World newWorld = new World(worldDTO, minMap,tiles);
         this.worldRepository.save(newWorld);
+    }
+
+    @Override
+    public WorldNoTiles getNoTiles(Integer id) {
+        return this.noTilesRepo.findById(id).get();
     }
 }

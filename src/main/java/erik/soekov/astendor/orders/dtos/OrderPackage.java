@@ -1,11 +1,11 @@
-package erik.soekov.astendor.orders.modelsWeb;
+package erik.soekov.astendor.orders.dtos;
 
 import java.util.List;
 
 public class OrderPackage {
 
     private List<StrippedOrder> warlordOrders;
-    private Integer warlordId;
+    private Integer worldId;
 
     public OrderPackage() {
     }
@@ -18,11 +18,11 @@ public class OrderPackage {
         this.warlordOrders = warlordOrders;
     }
 
-    public Integer getWarlordId() {
-        return warlordId;
+    public Integer getWorldId() {
+        return worldId;
     }
 
-    public void setWarlordId(Integer warlordId) {
-        this.warlordId = warlordId;
+    public void setWorldId(Integer worldId) {
+        this.worldId = worldId;
     }
 }

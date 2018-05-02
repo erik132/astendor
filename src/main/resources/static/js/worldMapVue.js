@@ -21,7 +21,6 @@ Vue.component("areabanner", {
 var mapview = new Vue({
     el: "#mapview",
     data: {
-        worldId: 1,
         warlord:{
             id: 1,
             x: 1,
@@ -36,7 +35,7 @@ var mapview = new Vue({
         },
         endturn(){
             console.log("ending turn");
-            this.$http.post("/endturn/1/").then(function (response) {
+            this.$http.post("/endturn/" + worldId).then(function (response) {
                 console.log("success");
                 console.log(response.data);
                 this.getState();
@@ -46,7 +45,7 @@ var mapview = new Vue({
             });
         },
         getState(){
-            this.$http.post("/worldstate/get/" + this.worldId).then(function(response){
+            this.$http.post("/worldstate/get/" + worldId).then(function(response){
                this.processState(response.data);
 
             }, function(response){
@@ -85,10 +84,10 @@ var orderSection = new Vue({
             this.ordersToServer(orderObjectArray);
         },
         ordersToServer(orders){
-            orders = {warlordId: 1, warlordOrders: orders};
+            orders = {worldId: worldId, warlordOrders: orders};
             console.log(JSON.stringify(orders));
 
-            this.$http.post("/orders/save/1", JSON.stringify(orders)).then(function (response) {
+            this.$http.post("/orders/save/" + worldId, JSON.stringify(orders)).then(function (response) {
                 console.log("success at sending orders");
                 console.log(response.data);
 

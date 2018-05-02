@@ -1,4 +1,4 @@
-package erik.soekov.astendor.orders.modelsWeb;
+package erik.soekov.astendor.orders.dtos;
 
 public class StrippedOrder {
 
