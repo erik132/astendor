@@ -1,9 +1,8 @@
 package erik.soekov.astendor.worlds.models;
 
 
-import erik.soekov.astendor.maps.models.WorldMapPrimitive;
 import erik.soekov.astendor.security.models.User;
-import erik.soekov.astendor.warlords.model.Warlord;
+import erik.soekov.astendor.warlords.model.WarlordPrimitive;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -19,27 +18,14 @@ public class WorldNoTiles {
     @Column(name = "turn_nr")
     private Integer turnNr;
 
-    @ManyToOne
-    @JoinColumn(name = "map_id", nullable = false)
-    private WorldMapPrimitive map;
-
-    @OneToMany(mappedBy = "world", cascade = CascadeType.ALL)
-    private Set<Warlord> warlords;
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "world_id")
+    private Set<WarlordPrimitive> warlords;
 
 
     public WorldNoTiles() {
     }
 
-    /*public WorldNoTiles(WorldDTO worldDTO,WorldMapPrimitive minMap, Set<MapTile> tiles){
-        this.name = worldDTO.getName();
-        this.turnNr = 0;
-        this.map = minMap;
-        this.warlords = new HashSet<>();
-        this.tiles = new HashSet<>();
-        tiles.forEach(mapTile -> {
-            this.tiles.add(new WorldTile(mapTile, this));
-        });
-    }*/
 
     public boolean checkForWarlord(User user){
         if(this.findWarlord(user) != null){
@@ -48,8 +34,8 @@ public class WorldNoTiles {
         return false;
     }
 
-    public Warlord findWarlord(User user){
-        for(Warlord warlord : this.getWarlords()){
+    public WarlordPrimitive findWarlord(User user){
+        for(WarlordPrimitive warlord : this.getWarlords()){
             if(warlord.getUserId().equals(user.getId())){
                 return warlord;
             }
@@ -73,14 +59,6 @@ public class WorldNoTiles {
         this.name = name;
     }
 
-    public WorldMapPrimitive getMap() {
-        return map;
-    }
-
-    public void setMap(WorldMapPrimitive map) {
-        this.map = map;
-    }
-
     public Integer getTurnNr() {
         return turnNr;
     }
@@ -93,11 +71,11 @@ public class WorldNoTiles {
         this.turnNr++;
     }
 
-    public Set<Warlord> getWarlords() {
+    public Set<WarlordPrimitive> getWarlords() {
         return warlords;
     }
 
-    public void setWarlords(Set<Warlord> warlords) {
+    public void setWarlords(Set<WarlordPrimitive> warlords) {
         this.warlords = warlords;
     }
 }

@@ -10,7 +10,7 @@ import erik.soekov.astendor.orders.repos.OrderRepository;
 import erik.soekov.astendor.security.models.User;
 import erik.soekov.astendor.warlords.exceptions.WarlordNotFoundException;
 import erik.soekov.astendor.warlords.model.Warlord;
-import erik.soekov.astendor.worlds.models.World;
+import erik.soekov.astendor.warlords.model.WarlordPrimitive;
 import erik.soekov.astendor.worlds.models.WorldNoTiles;
 import erik.soekov.astendor.worlds.services.WorldService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +46,7 @@ public class OrderServiceStandard implements OrderService{
         List<OrderPrimitive> orderList = new ArrayList<>();
         Integer countNr = 0;
         WorldNoTiles world = this.worldService.getNoTiles(orderPackage.getWorldId());
-        Warlord warlord = world.findWarlord(user);
+        WarlordPrimitive warlord = world.findWarlord(user);
 
         if(warlord == null){
             throw new WarlordNotFoundException("warlord not found in world " + world.getName());
@@ -77,6 +77,11 @@ public class OrderServiceStandard implements OrderService{
 
     @Override
     public void deleteWarlordOrders(Warlord warlord) {
+        this.orderPrimitiveRepository.deleteWarlordOrders(warlord.getId());
+    }
+
+    @Override
+    public void deleteWarlordOrders(WarlordPrimitive warlord) {
         this.orderPrimitiveRepository.deleteWarlordOrders(warlord.getId());
     }
 

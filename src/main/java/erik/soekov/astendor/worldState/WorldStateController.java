@@ -4,6 +4,7 @@ import erik.soekov.astendor.security.models.User;
 import erik.soekov.astendor.security.services.AstendorUserService;
 import erik.soekov.astendor.warlords.dtos.WarlordDTO;
 import erik.soekov.astendor.warlords.model.Warlord;
+import erik.soekov.astendor.warlords.model.WarlordPrimitive;
 import erik.soekov.astendor.worldState.models.WorldState;
 import erik.soekov.astendor.worlds.models.World;
 import erik.soekov.astendor.worlds.models.WorldNoTiles;
@@ -31,7 +32,7 @@ public class WorldStateController {
         WorldNoTiles world = this.worldService.getNoTiles(worldId);
         WorldState worldState = new WorldState();
 
-        Warlord warlord = world.findWarlord(user);
+        WarlordPrimitive warlord = world.findWarlord(user);
 
         if(warlord == null){
             worldState.setErrorMsg("User does not have warlord in this world");

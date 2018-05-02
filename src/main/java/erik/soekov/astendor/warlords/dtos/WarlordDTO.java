@@ -1,6 +1,7 @@
 package erik.soekov.astendor.warlords.dtos;
 
 import erik.soekov.astendor.warlords.model.Warlord;
+import erik.soekov.astendor.warlords.model.WarlordPrimitive;
 
 public class WarlordDTO {
 
@@ -17,6 +18,13 @@ public class WarlordDTO {
         this.x = warlord.getX();
         this.y = warlord.getY();
         this.raceId = warlord.getRace().getId();
+    }
+
+    public WarlordDTO(WarlordPrimitive warlord){
+        this.id = warlord.getId();
+        this.x = warlord.getX();
+        this.y = warlord.getY();
+        this.raceId = warlord.getRaceId();
     }
 
     public Integer getId() {
