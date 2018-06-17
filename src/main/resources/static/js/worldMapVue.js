@@ -17,6 +17,40 @@ Vue.component("areabanner", {
     }
 });
 
+Vue.component("movementcomponent",{
+   template: `
+        <div class="w3-bar-item">
+            <div class="is-gapless">
+            <div class="columns is-gapless is-mobile">
+                <div class="column movement-order-tile"></div>
+                <div class="column notification is-dark movement-order-tile" v-on:click="addMovementOrder('north')"><p>N</p></div>
+                <div class="column movement-order-tile"></div>
+            </div>
+            </div>
+            <div class="is-gapless">
+            <div class="columns is-gapless is-mobile">
+                <div class="column notification is-dark movement-order-tile" v-on:click="addMovementOrder('west')">W</div>
+                <div class="column notification is-dark movement-order-tile"></div>
+                <div class="column notification is-dark movement-order-tile" v-on:click="addMovementOrder('east')">E</div>
+            </div>
+            </div>
+            <div class="is-gapless">
+            <div class="columns is-gapless is-mobile">
+                <div class="column movement-order-tile"></div>
+                <div class="column notification is-dark movement-order-tile" v-on:click="addMovementOrder('south')">S</div>
+                <div class="column movement-order-tile"></div>
+            </div>
+            </div>
+        </div>
+   `,
+    methods: {
+       addMovementOrder(direction){
+           orderSection.addMovementOrder(direction);
+       }
+    }
+
+});
+
 
 var mapview = new Vue({
     el: "#mapview",
@@ -118,4 +152,12 @@ var orderSection = new Vue({
             $("#" + orderId).remove();
         }
     }
+});
+
+var orderMenu = new Vue({
+    el: "#orderMenu",
+    data: {
+        msg: "order menu",
+    },
+
 });

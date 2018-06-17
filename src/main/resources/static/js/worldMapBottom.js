@@ -40,15 +40,14 @@ function saveOrders(){
     orderSection.saveOrders();
 }
 
-function openRightMenu(){
-    //document.getElementById("main").style.marginRight = "25%";
-    document.getElementById("rightMenu").style.width = "25%";
-    document.getElementById("rightMenu").style.display = "block";
+function openOrderMenu(){
+    document.getElementById("orderMenu").style.width = "25%";
+    document.getElementById("orderMenu").style.display = "block";
+    initOrderMenu();
 }
 
-function closeRightMenu() {
-    //document.getElementById("main").style.marginRight = "0%";
-    document.getElementById("rightMenu").style.display = "none";
+function closeOrderMenu() {
+    document.getElementById("orderMenu").style.display = "none";
 }
 
 //---------------------------------------------------

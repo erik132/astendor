@@ -12,4 +12,11 @@ function initOrderSection(){
     });
 }
 
+function initOrderMenu(){
+    var cw = $('.movement-order-tile').width();
+    $('.movement-order-tile').css({
+        'height': cw + 'px'
+    });
+}
+
 

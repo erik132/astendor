@@ -48,6 +48,11 @@
 
 }
 
+.movement-order-tile{
+    padding: 50% 0;
+    text-align: center;
+}
+
 .order-type{
     margin-right: 5px;
 }

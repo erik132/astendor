@@ -25,34 +25,9 @@
 </head>
 <body>
 
-    <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
-        <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-        <a href="#" class="w3-bar-item w3-button">Link 1</a>
-        <a href="#" class="w3-bar-item w3-button">Link 2</a>
-        <a href="#" class="w3-bar-item w3-button">Link 3</a>
-        <div class="w3-bar-item">
-            <div class="is-gapless">
-            <div class="columns is-gapless is-mobile">
-                <div class="column notification is-dark"></div>
-                <div class="column notification is-dark">N</div>
-                <div class="column notification is-dark"></div>
-            </div>
-            </div>
-            <div class="is-gapless">
-            <div class="columns is-gapless is-mobile">
-                <div class="column notification is-dark">W</div>
-                <div class="column notification is-dark"></div>
-                <div class="column notification is-dark">E</div>
-            </div>
-            </div>
-            <div class="is-gapless">
-            <div class="columns is-gapless is-mobile">
-                <div class="column notification is-dark"></div>
-                <div class="column notification is-dark">S</div>
-                <div class="column notification is-dark"></div>
-            </div>
-            </div>
-        </div>
+    <div id="orderMenu" class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" >
+        <button onclick="closeOrderMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+        <movementcomponent/>
     </div>
     <div class="container" id="main">
         <div class="tile is-ancestor">
@@ -91,7 +66,7 @@
                     <div class="content">
                         <p class="title">Warlord order section</p>
                         <button type="button" class="button" onclick="endturn()">End Turn</button>
-                        <button type="button" class="button" onclick="openRightMenu()">Add</button>
+                        <button type="button" class="button" onclick="openOrderMenu()">Add</button>
                         <button type="button" class="button" onclick="saveOrders()">Save</button>
                         <div class="order-holder is-dark">
                             <div id="orderHolder">
