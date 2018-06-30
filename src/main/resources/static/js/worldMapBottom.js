@@ -59,3 +59,4 @@ function closeOrderMenu() {
 setEqual();
 initmap();
 initOrderSection();
+//orderSection.ordersFromServer();

@@ -81,7 +81,7 @@ var mapview = new Vue({
         getState(){
             this.$http.post("/worldstate/get/" + worldId).then(function(response){
                this.processState(response.data);
-
+                orderSection.ordersFromServer();
             }, function(response){
                 console.log("error getting world state");
                 console.log(response.data);
@@ -124,10 +124,31 @@ var orderSection = new Vue({
             this.$http.post("/orders/save/" + worldId, JSON.stringify(orders)).then(function (response) {
                 console.log("success at sending orders");
                 console.log(response.data);
+                this.ordersFromServer();
 
             },function(response) {
                 console.log("error sending orders");
                 console.log(response.data);
+            });
+        },
+        ordersFromServer(){
+            this.$http.get("/orders/get-orders/" + worldId)
+                .then(function(response){
+                    console.log("success at getting orders");
+                    this.processAndRenderOrders(response.data.warlordOrders);
+                }, function(response){
+                    console.log("error sending orders");
+                    console.log(response.data);
+                });
+        },
+        processAndRenderOrders(orders){
+            $(this.orderHolder).html("");
+            orders.forEach(order =>{
+               switch(order.orderType){
+                   case "Movement":
+                       this.addMovementOrder(order.orderParams);
+                       break;
+               }
             });
         },
         addMovementOrder(direction){
