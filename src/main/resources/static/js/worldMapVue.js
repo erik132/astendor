@@ -136,7 +136,7 @@ var orderSection = new Vue({
                 
                 <div class="notification has-text-black level" id="order` + this.currentId +`">
                     <div class="level-left">
-                    <span class="order-type">Move</span> <span>` + direction +`</span>
+                    <span class="order-type">Movement</span> <span>` + direction +`</span>
                     </div>
                     <div class="level-right">
                         <span class="icon has-text-danger" onclick="orderSection.deleteMovementOrder('order` + this.currentId +`')">

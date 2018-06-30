@@ -1,25 +1,21 @@
 package erik.soekov.astendor.orders;
 
-import erik.soekov.astendor.general.MainController;
-import erik.soekov.astendor.general.constants.LinkLib;
 import erik.soekov.astendor.orders.dtos.OrderPackage;
-import erik.soekov.astendor.orders.dtos.StrippedOrder;
 import erik.soekov.astendor.orders.services.OrderExecutionService;
 import erik.soekov.astendor.orders.services.OrderService;
 import erik.soekov.astendor.security.models.User;
 import erik.soekov.astendor.security.services.AstendorUserService;
 import erik.soekov.astendor.warlords.exceptions.WarlordNotFoundException;
-import erik.soekov.astendor.warlords.model.Warlord;
 import erik.soekov.astendor.warlords.services.WarlordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @RestController
-@RequestMapping(method = RequestMethod.POST, value = "/orders")
-public class OrderController {
+@RequestMapping(value = "/orders")
+public class OrderRestController {
 
     @Autowired
     private OrderExecutionService orderExecutionService;
@@ -33,13 +29,13 @@ public class OrderController {
     @Autowired
     private AstendorUserService userService;
 
-    @RequestMapping("/executewarlord/{id}")
+    @RequestMapping(method = RequestMethod.POST, value="/executewarlord/{id}")
     public String testOrder(@PathVariable Integer id){
         this.orderExecutionService.executeWarlordOrders(this.warlordService.getWarlord(id));
         return "order set";
     }
 
-    @RequestMapping("save/{worldId}")
+    @RequestMapping(method = RequestMethod.POST, value="save/{worldId}")
     public String saveOrders(@RequestBody OrderPackage orderPackage, Authentication authentication){
         User user = this.userService.findByAuthentication(authentication);
 
@@ -49,5 +45,21 @@ public class OrderController {
             return "orders not saved";
         }
         return "orders received";
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value="/get-orders/{worldId}")
+    public OrderPackage getOrders(@PathVariable Integer worldId, Authentication authentication){
+        OrderPackage result = new OrderPackage();
+        User user = this.userService.findByAuthentication(authentication);
+
+        try{
+            result.setWarlordOrders(this.orderService.getWarlordOrders(worldId, user));
+            result.setWorldId(worldId);
+        }catch (WarlordNotFoundException wnfe){
+            result.setWarlordOrders(new ArrayList<>());
+            return result;
+        }
+
+        return result;
     }
 }

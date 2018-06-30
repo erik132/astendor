@@ -17,4 +17,5 @@ public interface OrderService {
     public void saveOrder(Order order);
     public void deleteWarlordOrders(Warlord warlord);
     public void deleteWarlordOrders(WarlordPrimitive warlord);
+    public List<StrippedOrder> getWarlordOrders(Integer worldId, User user) throws WarlordNotFoundException;
 }

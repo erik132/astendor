@@ -34,10 +34,19 @@ public class OrderServiceStandard implements OrderService{
 
     private Integer translateOrderType(String frontEndCode){
         switch (frontEndCode){
-            case "Move":
+            case "Movement":
                 return 1;
                 default:
                     return -1;
+        }
+    }
+
+    private String translateToFrontOrderType(Integer backendCode){
+        switch (backendCode){
+            case 1:
+                return "Movement";
+                default:
+                    return "None";
         }
     }
 
@@ -45,12 +54,7 @@ public class OrderServiceStandard implements OrderService{
     public void saveOrders(OrderPackage orderPackage, User user) throws WarlordNotFoundException {
         List<OrderPrimitive> orderList = new ArrayList<>();
         Integer countNr = 0;
-        WorldNoTiles world = this.worldService.getNoTiles(orderPackage.getWorldId());
-        WarlordPrimitive warlord = world.findWarlord(user);
-
-        if(warlord == null){
-            throw new WarlordNotFoundException("warlord not found in world " + world.getName());
-        }
+        WarlordPrimitive warlord = this.getMinWarlord(orderPackage.getWorldId(), user);
 
         this.deleteWarlordOrders(warlord);
         for(StrippedOrder order: orderPackage.getWarlordOrders()){
@@ -61,6 +65,19 @@ public class OrderServiceStandard implements OrderService{
                     order.getOrderParams()));
         }
         this.orderPrimitiveRepository.saveAll(orderList);
+    }
+
+    @Override
+    public List<StrippedOrder> getWarlordOrders(Integer worldId, User user) throws WarlordNotFoundException {
+        List<StrippedOrder> results = new ArrayList<>();
+        WarlordPrimitive warlord = this.getMinWarlord(worldId, user);
+
+        List<OrderPrimitive> orders = this.orderPrimitiveRepository.allWarlordOrders(warlord.getId());
+        orders.forEach(order ->{
+            results.add(new StrippedOrder(this.translateToFrontOrderType(order.getOrderType()), order.getOrderParams()));
+        });
+
+        return results;
     }
 
     @Override
@@ -85,5 +102,14 @@ public class OrderServiceStandard implements OrderService{
         this.orderPrimitiveRepository.deleteWarlordOrders(warlord.getId());
     }
 
+    private WarlordPrimitive getMinWarlord(Integer worldId, User user) throws WarlordNotFoundException{
+        WorldNoTiles world = this.worldService.getNoTiles(worldId);
+        WarlordPrimitive warlord = world.findWarlord(user);
+
+        if(warlord == null){
+            throw new WarlordNotFoundException("warlord not found in world " + world.getName());
+        }
+        return warlord;
+    }
 
 }

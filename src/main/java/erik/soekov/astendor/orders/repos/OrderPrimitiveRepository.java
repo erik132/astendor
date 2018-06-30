@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface OrderPrimitiveRepository extends CrudRepository<OrderPrimitive, OrderIdentity> {
 
@@ -15,4 +16,7 @@ public interface OrderPrimitiveRepository extends CrudRepository<OrderPrimitive,
     @Modifying
     @Query("delete from OrderPrimitive o where o.orderIdentity.warlordId = :warlord")
     void deleteWarlordOrders(@Param("warlord") Integer warlordId);
+
+    @Query("select o from OrderPrimitive o where o.orderIdentity.warlordId = :warlord")
+    List<OrderPrimitive> allWarlordOrders(@Param("warlord") Integer warlordId);
 }

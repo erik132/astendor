@@ -1,5 +1,7 @@
 package erik.soekov.astendor.orders.dtos;
 
+import erik.soekov.astendor.orders.models.Order;
+
 public class StrippedOrder {
 
     private String orderType;
@@ -7,6 +9,11 @@ public class StrippedOrder {
 
 
     public StrippedOrder() {
+    }
+
+    public StrippedOrder(String orderType, String orderParams) {
+        this.orderType = orderType;
+        this.orderParams = orderParams;
     }
 
     public String getOrderParams() {
