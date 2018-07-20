@@ -30,6 +30,9 @@ public class WorldTile {
     @JoinColumn(name="world_id", nullable = false)
     private World world;
 
+    @Column(name="owner_warlord")
+    private Integer ownerWarlord;
+
     public WorldTile() {
     }
 
@@ -87,5 +90,13 @@ public class WorldTile {
 
     public void setWorld(World world) {
         this.world = world;
+    }
+
+    public Integer getOwnerWarlord() {
+        return ownerWarlord;
+    }
+
+    public void setOwnerWarlord(Integer ownerWarlord) {
+        this.ownerWarlord = ownerWarlord;
     }
 }

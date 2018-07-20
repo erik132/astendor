@@ -29,7 +29,8 @@ CREATE TABLE world_tiles(
   name VARCHAR(255) NOT NULL,
   terrain_id INT NOT NULL,
   race_id INT NOT NULL,
-  PRIMARY KEY (world_id,x,y)
+  PRIMARY KEY (world_id,x,y),
+  owner_warlord INT DEFAULT NULL
 );
 
 CREATE TABLE maptiles(
