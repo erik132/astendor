@@ -1,6 +1,6 @@
 package erik.soekov.astendor.items;
 
-import erik.soekov.astendor.items.models.Blueprint;
+import erik.soekov.astendor.items.dtos.BlueprintDto;
 import erik.soekov.astendor.items.models.Item;
 import erik.soekov.astendor.items.services.BlueprintService;
 import erik.soekov.astendor.items.services.ItemService;
@@ -26,7 +26,7 @@ public class ItemRestController {
     }
 
     @RequestMapping(value = "all-blueprints")
-    public List<Blueprint> getBlueprints(){
+    public List<BlueprintDto> getBlueprints(){
         return this.blueprintService.getBlueprints();
     }
 }
