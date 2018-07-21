@@ -29,7 +29,8 @@ INSERT INTO items(id, name) VALUES
   (6, "Copper Ore"),
   (7, "Tin Ore"),
   (8, "Steel Ingot"),
-  (9, "Bronze Ingot")
+  (9, "Bronze Ingot"),
+  (10, "Camel")
 ;
 
 INSERT INTO blueprints(id, name, output_item_id) VALUES
