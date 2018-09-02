@@ -1,6 +1,7 @@
 package erik.soekov.astendor.maps.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="maptiles")
@@ -25,6 +26,9 @@ public class MapTile {
     @ManyToOne
     @JoinColumn(name="race_id", nullable = false)
     private Race race;
+
+    @OneToMany(mappedBy = "mapTile", cascade = CascadeType.ALL)
+    List<MapHarvest> harvests;
 
     public MapTile() {
     }
@@ -92,5 +96,13 @@ public class MapTile {
 
     public void setRace(Race race) {
         this.race = race;
+    }
+
+    public List<MapHarvest> getHarvests() {
+        return harvests;
+    }
+
+    public void setHarvests(List<MapHarvest> harvests) {
+        this.harvests = harvests;
     }
 }

@@ -6,13 +6,21 @@ import erik.soekov.astendor.maps.models.Terrain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "world_tiles")
 public class WorldTile {
 
-    @EmbeddedId
-    private WorldTileIdentity id;
+    @Id
+    private Integer id;
+
+    @Column(name = "x")
+    private Integer x;
+
+    @Column(name = "y")
+    private Integer y;
 
     @Column(name = "name")
     private String name;
@@ -33,22 +41,34 @@ public class WorldTile {
     @Column(name="owner_warlord")
     private Integer ownerWarlord;
 
+    @OneToMany(mappedBy = "worldTile", cascade = CascadeType.ALL)
+    private List<WorldHarvest> harvests;
+
     public WorldTile() {
     }
 
     public WorldTile(MapTile mapTile, World world){
-        this.id = new WorldTileIdentity(world.getId(),mapTile.getX(), mapTile.getY());
+        this.x = mapTile.getX();
+        this.y = mapTile.getY();
         this.name = mapTile.getName();
         this.terrain = mapTile.getTerrain();
         this.race = mapTile.getRace();
         this.world = world;
     }
 
-    public WorldTileIdentity getId() {
+    public List<WorldHarvest> getHarvests() {
+        return harvests;
+    }
+
+    public void setHarvests(List<WorldHarvest> harvests) {
+        this.harvests = harvests;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(WorldTileIdentity id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -77,11 +97,11 @@ public class WorldTile {
     }
 
     public Integer getX(){
-        return this.id.getX();
+        return this.x;
     }
 
     public Integer getY(){
-        return this.id.getY();
+        return this.y;
     }
 
     public World getWorld() {

@@ -29,9 +29,9 @@ CREATE TABLE maptiles(
 
 #amount shows how many units per 100 turns
 CREATE TABLE map_harvests(
-  tile_id INT NOT NULL ,
+  tile_id INT NOT NULL,
   item_id INT NOT NULL,
-  amount INT NOT NULL ,
+  amount INT NOT NULL,
   PRIMARY KEY (tile_id, item_id)
 );
 
@@ -44,23 +44,22 @@ CREATE TABLE worlds(
 );
 
 CREATE TABLE world_tiles(
+  id INT AUTO_INCREMENT PRIMARY KEY,
   world_id INT NOT NULL,
   x INT(4) NOT NULL,
   y INT(4) NOT NULL,
   name VARCHAR(255) NOT NULL,
   terrain_id INT NOT NULL,
   race_id INT NOT NULL,
-  owner_warlord INT DEFAULT NULL,
-  PRIMARY KEY (world_id,x,y)
+  owner_warlord INT DEFAULT NULL
 );
 
 CREATE TABLE world_harvests(
-  world_id INT NOT NULL,
-  x INT NOT NULL ,
-  y INT NOT NULL ,
+  tile_id INT NOT NULL,
   item_id INT NOT NULL,
   amount INT NOT NULL,
-  PRIMARY KEY (world_id,x,y, item_id)
+  harvest_meter DOUBLE NOT NULL DEFAULT 0.0,
+  PRIMARY KEY (tile_id, item_id)
 );
 
 CREATE TABLE terrains(
