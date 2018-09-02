@@ -13,6 +13,9 @@ public class WorldPrimitive {
     @Column(name = "turn_nr")
     private Integer turnNr;
 
+    @Column(name = "harvest_multi")
+    private Float harvestMulti;
+
     public WorldPrimitive() {
     }
 
@@ -38,5 +41,13 @@ public class WorldPrimitive {
 
     public void setTurnNr(Integer turnNr) {
         this.turnNr = turnNr;
+    }
+
+    public Float getHarvestMulti() {
+        return harvestMulti;
+    }
+
+    public void setHarvestMulti(Float harvestMulti) {
+        this.harvestMulti = harvestMulti;
     }
 }

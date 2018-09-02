@@ -4,6 +4,7 @@ public class WorldDTO {
 
     private String name;
     private Integer mapId;
+    private Float harvestMulti;
 
     public WorldDTO() {
     }
@@ -24,8 +25,16 @@ public class WorldDTO {
         this.mapId = mapId;
     }
 
+    public Float getHarvestMulti() {
+        return harvestMulti;
+    }
+
+    public void setHarvestMulti(Float harvestMulti) {
+        this.harvestMulti = harvestMulti;
+    }
+
     @Override
     public String toString() {
-        return this.mapId + " " + this.name;
+        return this.mapId + " " + this.name + " " + this.harvestMulti;
     }
 }

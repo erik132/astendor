@@ -55,10 +55,12 @@ CREATE TABLE world_tiles(
 );
 
 CREATE TABLE world_harvests(
-  tile_id INT NOT NULL,
+  world_id INT NOT NULL,
+  x INT NOT NULL ,
+  y INT NOT NULL ,
   item_id INT NOT NULL,
   amount INT NOT NULL,
-  PRIMARY KEY (tile_id, item_id)
+  PRIMARY KEY (world_id,x,y, item_id)
 );
 
 CREATE TABLE terrains(

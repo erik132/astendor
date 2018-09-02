@@ -18,6 +18,9 @@ public class WorldNoTiles {
     @Column(name = "turn_nr")
     private Integer turnNr;
 
+    @Column(name = "harvest_multi")
+    private Float harvestMulti;
+
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "world_id")
     private Set<WarlordPrimitive> warlords;
@@ -77,5 +80,13 @@ public class WorldNoTiles {
 
     public void setWarlords(Set<WarlordPrimitive> warlords) {
         this.warlords = warlords;
+    }
+
+    public Float getHarvestMulti() {
+        return harvestMulti;
+    }
+
+    public void setHarvestMulti(Float harvestMulti) {
+        this.harvestMulti = harvestMulti;
     }
 }

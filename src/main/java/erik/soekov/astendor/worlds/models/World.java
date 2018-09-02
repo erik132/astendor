@@ -24,6 +24,9 @@ public class World {
     @Column(name = "turn_nr")
     private Integer turnNr;
 
+    @Column(name = "harvest_multi")
+    private Float harvestMulti;
+
     @ManyToOne
     @JoinColumn(name = "map_id", nullable = false)
     private WorldMapPrimitive map;
@@ -44,6 +47,7 @@ public class World {
         this.map = minMap;
         this.warlords = new HashSet<>();
         this.tiles = new HashSet<>();
+        this.harvestMulti = worldDTO.getHarvestMulti();
         tiles.forEach(mapTile -> {
             this.tiles.add(new WorldTile(mapTile, this));
         });
@@ -134,5 +138,13 @@ public class World {
 
     public void setTiles(Set<WorldTile> tiles) {
         this.tiles = tiles;
+    }
+
+    public Float getHarvestMulti() {
+        return harvestMulti;
+    }
+
+    public void setHarvestMulti(Float harvestMulti) {
+        this.harvestMulti = harvestMulti;
     }
 }
